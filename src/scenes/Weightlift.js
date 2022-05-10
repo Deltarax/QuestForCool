@@ -4,7 +4,7 @@ class Weightlift extends Phaser.Scene {
     }
 
     create() {
-        
+        console.log("we in weightlift");
 
     }
 

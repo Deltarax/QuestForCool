@@ -11,7 +11,7 @@ let config = {
         target: 60,
         forceSetTimeOut: true
     }, 
-    scene: [ Load, Menu, Play, GameOver ]
+    scene: [ Load, Menu, Weightlift, Cutscene ]
 }
 
 let game = new Phaser.Game(config);
