@@ -6,6 +6,7 @@ class Load extends Phaser.Scene {
     preload(){
         this.load.image('weightliftDown', './assets/tempWeightliftDown.png');
         this.load.image('weightliftUp', './assets/tempWeightliftUp.png');
+        this.load.image('arrow', './assets/arrow.png');
     }
 
     update(){

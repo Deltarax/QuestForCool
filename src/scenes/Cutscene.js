@@ -4,7 +4,7 @@ class Cutscene extends Phaser.Scene {
     }
 
     create() {
-        
+        console.log('Inside of Cutscene');
 
     }
 

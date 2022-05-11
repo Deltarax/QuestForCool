@@ -4,7 +4,7 @@ class Menu extends Phaser.Scene {
     }
   
     create() {
-  
+      console.log('Inside Menu');
     }
   
     update() {
