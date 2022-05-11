@@ -10,6 +10,6 @@ class Load extends Phaser.Scene {
 
     update(){
         console.log('loading');
-        this.scene.start('weightliftScene');
+        this.scene.start('cutScene');
     }
 }

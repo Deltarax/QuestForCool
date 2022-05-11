@@ -7,18 +7,6 @@ class Weightlift extends Phaser.Scene {
         console.log("we in weightlift");
 
         // text configuration
-        let textConfig = {
-            fontFamily: 'Roboto',
-            fontSize: '85px',
-            // backgroundColor: '#FFFFFF',
-            color: '#000000',
-            align: 'right',
-            padding: {
-            top: 5,
-            bottom: 5,
-            },
-            fixedWidth: 0
-        }
 
         // adds weightlifter down and up
         this.weightliftDown = this.add.sprite(300, 300, 'weightliftDown').setAlpha(1);
@@ -26,6 +14,7 @@ class Weightlift extends Phaser.Scene {
 
         // instructions
         this.add.text(30, 400, "press space to LIFT!!!", textConfig); 
+        this.add.text(0,0,'strongboys have 100 gains', smallConfig);
 
         // reserves keeys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -33,8 +22,8 @@ class Weightlift extends Phaser.Scene {
         // flag for weightlifting
         this.weightdownFlag = true;
 
-        this.weightTicks = 0;
-        this.weightScore = 0;
+        this.weightTicks = 0;   // Tracking time for loss of progress
+        this.weightScore = 0;   // Tracking GAINS
 
         this.scoreText = this.add.text(400, 200, 'Gains: ' + this.weightScore, textConfig);
 
@@ -62,12 +51,18 @@ class Weightlift extends Phaser.Scene {
 
         }
 
+        // Progress slowly goes down over time.
         if (this.weightTicks >= 100){
             this.weightTicks = 0;
             if (this.weightScore > 0){
                 this.weightScore--;
                 this.scoreText.setText('Gains: ' + this.weightScore);
             }
+        }
+
+        if (this.weightScore >= 100){
+            cutsceneState = 'end';
+            this.scene.start('cutScene');
         }
         
     }
