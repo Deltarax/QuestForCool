@@ -11,6 +11,14 @@ class Weightlift extends Phaser.Scene {
         // adds weightlifter down and up
         this.weightliftDown = this.add.sprite(300, 300, 'weightliftDown').setAlpha(1);
         this.weightliftUp = this.add.sprite(300, 300, 'weightliftUp').setAlpha(0);
+        this.next = this.add.sprite(900, 500, 'arrow').setAlpha(0);
+        this.next.setInteractive({
+            useHandCursor: true,
+        });
+        // click on a Game Object
+        this.input.on('gameobjectdown', (pointer, gameObject, event) => {
+            this.scene.start('cutScene');
+        });
 
         // instructions
         this.add.text(30, 400, "press space to LIFT!!!", textConfig); 
