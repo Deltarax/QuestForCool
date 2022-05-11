@@ -68,6 +68,7 @@ class Weightlift extends Phaser.Scene {
             }
         }
 
+        // When sufficiently strong end game
         if (this.weightScore >= 100){
             cutsceneState = 'end';
             this.scene.start('cutScene');
