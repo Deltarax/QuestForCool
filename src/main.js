@@ -15,3 +15,5 @@ let config = {
 }
 
 let game = new Phaser.Game(config);
+
+let keyF, keyR, keyLEFT, keyRIGHT, keyUP, keyDOWN, keySPACE;
