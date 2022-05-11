@@ -50,20 +50,23 @@ class Weightlift extends Phaser.Scene {
                 this.weightliftUp.setAlpha(1);
                 this.weightdownFlag = false;
                 this.weightScore++;
+                this.scoreText.setText('Gains: ' + this.weightScore);
                 console.log(this.weightScore);
             } else {
                 this.weightliftDown.setAlpha(1);
                 this.weightliftUp.setAlpha(0);
                 this.weightdownFlag = true;
                 this.weightScore++;
+                this.scoreText.setText('Gains: ' + this.weightScore);
             }
 
         }
 
-        if (this.weightTicks >= 500){
+        if (this.weightTicks >= 100){
             this.weightTicks = 0;
             if (this.weightScore > 0){
                 this.weightScore--;
+                this.scoreText.setText('Gains: ' + this.weightScore);
             }
         }
         
