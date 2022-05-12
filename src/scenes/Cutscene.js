@@ -18,9 +18,15 @@ class Cutscene extends Phaser.Scene {
 
         // checks what kind of cutscene we are in, and puts appropriate text
         if (cutsceneState == 'start'){
+            this.bg = this.add.sprite(0,0, 'cutsceneBG').setOrigin(0, 0);
+
             this.mainGuy = this.add.sprite(100, 150, 'cutsceneMC').setOrigin(0.5,0.5);
-            this.coolKids = this.add.sprite(700, 500, 'cutsceneCoolKids').setOrigin(0.5,0.5);
-            this.speechBubble = this.add.sprite(800, 300, 'weightSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
+            this.coolKids = this.add.sprite(700, 350, 'cutsceneCoolKids').setOrigin(0.5,0.5);
+            
+            this.coolBench = this.add.sprite(160,230, 'coolBench').setOrigin(0,0);
+            this.mcBench = this.add.sprite(0,0, 'mcBench').setOrigin(0,0);
+            
+            this.speechBubble = this.add.sprite(800, 200, 'weightSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
             this.teardrop = this.add.sprite(280, 50, 'teardrop').setOrigin(0.5,0.5).setAlpha(0);
             // this.add.text(0, game.config.height/2, "press space to start", textConfig);
         } else if (cutsceneState == 'end'){

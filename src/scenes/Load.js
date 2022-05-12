@@ -4,6 +4,11 @@ class Load extends Phaser.Scene {
     }
 
     preload(){
+        // elements for cutscene background
+        this.load.image('cutsceneBG', './assets/bg.png');
+        this.load.image('coolBench', './assets/coolBench.png');
+        this.load.image('mcBench', './assets/mcBench.png');
+
         this.load.image('weightliftDown', './assets/tempWeightliftDown.png');
         this.load.image('weightliftUp', './assets/tempWeightliftUp.png');
         this.load.image('cutsceneMC', './assets/tempCutsceneMC.png');
