@@ -30,7 +30,7 @@ let textConfig = {
 
 let smallConfig = {
     fontFamily: 'Roboto',
-    fontSize: '20px',
+    fontSize: '30px',
     // backgroundColor: '#FFFFFF',
     color: '#000000',
     align: 'right',

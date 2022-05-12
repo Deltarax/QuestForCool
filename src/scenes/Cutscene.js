@@ -11,26 +11,31 @@ class Cutscene extends Phaser.Scene {
         this.teardropFlag = false;
         this.finishedFlag = false;
 
+        // End cutscene special flags
+        this.surpriseFlag = false;
+        this.endMovementFlag = false;
+
         this.sceneTicks = 0;
 
         // added keycode
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
+        this.bg = this.add.sprite(0,0, 'cutsceneBG').setOrigin(0, 0);
+
+        this.mainGuy = this.add.sprite(100, 150, 'cutsceneMC').setOrigin(0.5,0.5);
+        this.coolKids = this.add.sprite(700, 350, 'cutsceneCoolKids').setOrigin(0.5,0.5);
+        
+        this.coolBench = this.add.sprite(250,230, 'coolBench').setOrigin(0,0);
+        this.mcBench = this.add.sprite(0,0, 'mcBench').setOrigin(0,0);
+
+        this.teardrop = this.add.sprite(280, 50, 'teardrop').setOrigin(0.5,0.5).setAlpha(0);
+
         // checks what kind of cutscene we are in, and puts appropriate text
         if (cutsceneState == 'start'){
-            this.bg = this.add.sprite(0,0, 'cutsceneBG').setOrigin(0, 0);
-
-            this.mainGuy = this.add.sprite(100, 150, 'cutsceneMC').setOrigin(0.5,0.5);
-            this.coolKids = this.add.sprite(700, 350, 'cutsceneCoolKids').setOrigin(0.5,0.5);
-            
-            this.coolBench = this.add.sprite(160,230, 'coolBench').setOrigin(0,0);
-            this.mcBench = this.add.sprite(0,0, 'mcBench').setOrigin(0,0);
-            
             this.speechBubble = this.add.sprite(800, 200, 'weightSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
-            this.teardrop = this.add.sprite(280, 50, 'teardrop').setOrigin(0.5,0.5).setAlpha(0);
-            // this.add.text(0, game.config.height/2, "press space to start", textConfig);
         } else if (cutsceneState == 'end'){
-            this.add.text(0, game.config.height/2, "you are STRONG!", textConfig);
+            this.speechBubble = this.add.sprite(800, 200, 'endSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
+            this.surprise = this.add.sprite(280, 50, 'surprise').setOrigin(0.5,0.5).setAlpha(0);
         }
         
 
@@ -38,42 +43,74 @@ class Cutscene extends Phaser.Scene {
 
     update() {
 
-        // if the cutscene is the start one
-        if (cutsceneState == 'start'){
-            // MOving segment
-            if (this.movingFlag){
-                if (this.mainGuy.x < 300){
-                    this.mainGuy.x++;    //move the mc
+        // Moving segment
+        if (this.movingFlag){
+            if (this.mainGuy.x < 300){
+                this.mainGuy.x++;    //move the mc
+            } else {
+                // change part of scene
+                this.movingFlag = false;
+                this.speechFlag = true;
+            }
+        } else if (this.speechFlag){
+            // reveal the speachbubble
+            this.speechBubble.setAlpha(1);
+            this.sceneTicks++;
+            // after one sec, change part of scene
+            if (this.sceneTicks > 100){
+                this.speechFlag = false;
+
+                // If we are in the ending cutscene, change paths
+                if (cutsceneState == 'end'){
+                    this.surpriseFlag = true;
                 } else {
-                    // change part of scene
-                    this.movingFlag = false;
-                    this.speechFlag = true;
-                }
-            } else if (this.speechFlag){
-                // reveal the speachbubble
-                this.speechBubble.setAlpha(1);
-                this.sceneTicks++;
-                // after one sec, change part of scene
-                if (this.sceneTicks > 100){
-                    this.speechFlag = false;
                     this.teardropFlag = true;
                 }
-            } else if (this.teardropFlag){
-                // reveal teardrop
-                this.teardrop.setAlpha(1);
-                // make teardrop fall down face
-                if (this.teardrop.y < 100){
-                    this.teardrop.y++;
-                } else {
-                    this.teardropFlag = false;
-                    this.finishedFlag = true;
-                }
-            } else if (this.finishedFlag) {
-                // allow player to press space to begin!
-                this.add.text(0, game.config.height/2, "press space to start", textConfig);
-                if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
-                    this.scene.start("weightliftScene");
-                }
+            }
+
+
+        // -------IF STANDARD CUTSCENE, PLAY TEARDROP------------
+        } else if (this.teardropFlag){
+            // reveal teardrop
+            this.teardrop.setAlpha(1);
+            // make teardrop fall down face
+            if (this.teardrop.y < 100){
+                this.teardrop.y++;
+            } else {
+                this.teardropFlag = false;
+                this.finishedFlag = true;
+            }
+        // ------------------------------------------------------
+
+        //-------IF FINAL CUTSCENE, PLAY VARIATION---------------
+        } else if (this.surpriseFlag){
+            // reveal teardrop
+            this.surprise.setAlpha(1);
+            this.sceneTicks++;
+            if (this.sceneTicks >= 150){
+                this.surprise.setAlpha(0);
+                this.surpriseFlag = false;
+                this.endMovementFlag = true;
+            }
+        } else if (this.endMovementFlag){
+            if (this.mainGuy.x < 430){
+                this.mainGuy.x++;    // move the mc to the right more
+            } else if (this.mainGuy.y < 350){
+                this.mainGuy.y++;    // move the mc down to the cool kids
+            }else {
+                // change part of scene
+                this.endMovementFlag = false;
+                this.finishedFlag = true;
+            }
+
+        //-------------------------------------------------------
+
+
+        } else if (this.finishedFlag) {
+            // allow player to press space to begin!
+            this.add.text(10, game.config.height - 50, "press space to start", smallConfig);
+            if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
+                this.scene.start("weightliftScene");
             }
         }
     }

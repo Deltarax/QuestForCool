@@ -22,7 +22,7 @@ class Weightlift extends Phaser.Scene {
 
         // instructions
         this.add.text(30, 400, "press space to LIFT!!!", textConfig); 
-        this.add.text(0,0,'strongboys have 100 gains', smallConfig);
+        this.add.text(0,0,'strongboys have 50 gains', smallConfig);
 
         // reserves keeys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -69,7 +69,7 @@ class Weightlift extends Phaser.Scene {
         }
 
         // When sufficiently strong end game
-        if (this.weightScore >= 100){
+        if (this.weightScore >= 50){
             cutsceneState = 'end';
             this.scene.start('cutScene');
         }

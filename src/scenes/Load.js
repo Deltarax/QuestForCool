@@ -15,7 +15,9 @@ class Load extends Phaser.Scene {
         this.load.image('cutsceneCoolKids', './assets/tempCoolKids.png');
         this.load.image('arrow', './assets/arrow.png');
         this.load.image('weightSpeechBubble', './assets/tempWeightSpeech.png');
+        this.load.image('endSpeechBubble', './assets/tempEndSpeech.png');
         this.load.image('teardrop', './assets/tempTeardrop.png');
+        this.load.image('surprise', './assets/tempSurprise.png');
     }
 
     update(){
