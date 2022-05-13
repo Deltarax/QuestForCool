@@ -34,6 +34,9 @@ class Weightlift extends Phaser.Scene {
         this.weightScore = 0;   // Tracking GAINS
 
         this.scoreText = this.add.text(400, 200, 'Gains: ' + this.weightScore, textConfig);
+        
+        // sfx
+        this.weightSFX = this.sound.add('weights', {volume: 0.2});
 
     }
 
@@ -49,6 +52,7 @@ class Weightlift extends Phaser.Scene {
                 this.weightScore++;
                 this.scoreText.setText('Gains: ' + this.weightScore);
                 console.log(this.weightScore);
+                this.weightSFX.play();
             } else {
                 this.weightliftDown.setAlpha(1);
                 this.weightliftUp.setAlpha(0);
@@ -71,7 +75,7 @@ class Weightlift extends Phaser.Scene {
         // When sufficiently strong end game
         if (this.weightScore >= 50){
             cutsceneState = 'end';
-            this.scene.start('cutScene');
+            this.next.setAlpha(1);
         }
         
     }

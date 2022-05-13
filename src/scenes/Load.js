@@ -18,6 +18,9 @@ class Load extends Phaser.Scene {
         this.load.image('endSpeechBubble', './assets/tempEndSpeech.png');
         this.load.image('teardrop', './assets/tempTeardrop.png');
         this.load.image('surprise', './assets/tempSurprise.png');
+
+        // music and sound
+        this.load.audio('weights', './assets/weightsSFX.wav')
     }
 
     update(){
