@@ -11,17 +11,22 @@ class Weightlift extends Phaser.Scene {
         // adds weightlifter down and up
         this.weightliftDown = this.add.sprite(300, 300, 'weightliftDown').setAlpha(1);
         this.weightliftUp = this.add.sprite(300, 300, 'weightliftUp').setAlpha(0);
-        this.next = this.add.sprite(900, 500, 'arrow').setAlpha(0);
-        this.next.setInteractive({
+
+
+        // Create the green arrow, link it to next scene, and hide it before it's needed.
+        this.nextArrow = this.add.sprite(50, 500, 'arrow').setAlpha(0).setScale(2);
+        this.nextArrow.setInteractive({
             useHandCursor: true,
         });
         // click on a Game Object
         this.input.on('gameobjectdown', (pointer, gameObject, event) => {
+            cutsceneState = 'end';
             this.scene.start('cutScene');
         });
 
+
         // instructions
-        this.add.text(30, 400, "press space to LIFT!!!", textConfig); 
+        this.add.text(100, 350, "press space to LIFT!!!", textConfig); 
         this.add.text(0,0,'strongboys have 50 gains', smallConfig);
 
         // reserves keeys
@@ -73,10 +78,10 @@ class Weightlift extends Phaser.Scene {
         }
 
         // When sufficiently strong end game
-        if (this.weightScore >= 50){
-            cutsceneState = 'end';
-            this.next.setAlpha(1);
-        }
+        // if (this.weightScore >= 50){
+        //     cutsceneState = 'end';
+        //     this.nextArrow.setAlpha(1);
+        // }
         
     }
 

@@ -20,14 +20,12 @@ class Cutscene extends Phaser.Scene {
         // added keycode
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
+        // Sprites for cutscene
         this.bg = this.add.sprite(0,0, 'cutsceneBG').setOrigin(0, 0);
-
         this.mainGuy = this.add.sprite(100, 150, 'cutsceneMC').setOrigin(0.5,0.5);
         this.coolKids = this.add.sprite(700, 350, 'cutsceneCoolKids').setOrigin(0.5,0.5);
-        
         this.coolBench = this.add.sprite(250,230, 'coolBench').setOrigin(0,0);
         this.mcBench = this.add.sprite(0,0, 'mcBench').setOrigin(0,0);
-
         this.teardrop = this.add.sprite(280, 50, 'teardrop').setOrigin(0.5,0.5).setAlpha(0);
 
         // checks what kind of cutscene we are in, and puts appropriate text
@@ -38,6 +36,20 @@ class Cutscene extends Phaser.Scene {
             this.surprise = this.add.sprite(280, 50, 'surprise').setOrigin(0.5,0.5).setAlpha(0);
         }
         
+        // Create the green arrow, link it to next scene, and hide it before it's needed.
+        this.nextArrow = this.add.sprite(50, 500, 'arrow').setAlpha(0).setScale(2);
+        this.nextArrow.setInteractive({
+            useHandCursor: true,
+        });
+        // click on a Game Object
+        this.input.on('gameobjectdown', (pointer, gameObject, event) => {
+            // depending on what cutscene, start the correct game
+            if (cutsceneState == 'start'){
+                this.scene.start("weightliftScene");
+            } else if (cutsceneState == 'end'){
+                this.scene.start("endScene");
+            }
+        });
 
     }
 
@@ -94,8 +106,10 @@ class Cutscene extends Phaser.Scene {
             }
         } else if (this.endMovementFlag){
             if (this.mainGuy.x < 430){
+                this.mainGuy.x++; 
                 this.mainGuy.x++;    // move the mc to the right more
             } else if (this.mainGuy.y < 350){
+                this.mainGuy.y++;
                 this.mainGuy.y++;    // move the mc down to the cool kids
             }else {
                 // change part of scene
@@ -108,10 +122,7 @@ class Cutscene extends Phaser.Scene {
 
         } else if (this.finishedFlag) {
             // allow player to press space to begin!
-            this.add.text(10, game.config.height - 50, "press space to start", smallConfig);
-            if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
-                this.scene.start("weightliftScene");
-            }
+            this.nextArrow.setAlpha(1);
         }
     }
 
