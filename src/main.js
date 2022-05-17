@@ -12,7 +12,7 @@ let config = {
         target: 60,
         forceSetTimeOut: true
     }, 
-    scene: [ Load, Menu, Weightlift, Cutscene ]
+    scene: [ Load, Menu, Weightlift, Cutscene, Intro, End ]
 }
 
 let textConfig = {
@@ -31,6 +31,19 @@ let textConfig = {
 let smallConfig = {
     fontFamily: 'Roboto',
     fontSize: '30px',
+    // backgroundColor: '#FFFFFF',
+    color: '#000000',
+    align: 'right',
+    padding: {
+    top: 5,
+    bottom: 5,
+    },
+    fixedWidth: 0
+}
+
+let mediumConfig = {
+    fontFamily: 'Roboto',
+    fontSize: '40px',
     // backgroundColor: '#FFFFFF',
     color: '#000000',
     align: 'right',
