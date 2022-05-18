@@ -21,6 +21,10 @@ class Load extends Phaser.Scene {
         this.load.image('teardrop', './assets/tempTeardrop.png');
         this.load.image('surprise', './assets/tempSurprise.png');
 
+        this.load.image('hurdle', './assets/tempHurdle.png');
+        this.load.image('hurdleMC', './assets/tempHurdleSprite.png');
+        this.load.image('hurdleBG', './assets/tempHurdleBG.png');
+
         // music and sound
         this.load.audio('weights', './assets/weightsSFX.wav')
     }
