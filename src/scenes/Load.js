@@ -11,6 +11,8 @@ class Load extends Phaser.Scene {
 
         this.load.image('weightliftDown', './assets/tempWeightliftDown.png');
         this.load.image('weightliftUp', './assets/tempWeightliftUp.png');
+        this.load.image('mirrorOpen', './assets/tempMirrorTalk.png');
+        this.load.image('mirrorClosed', './assets/tempMirrorTalk2.png');
         this.load.image('cutsceneMC', './assets/tempCutsceneMC.png');
         this.load.image('cutsceneCoolKids', './assets/tempCoolKids.png');
         this.load.image('arrow', './assets/arrow.png');
@@ -26,7 +28,7 @@ class Load extends Phaser.Scene {
     update(){
         console.log('loading');
 
-        this.scene.start('weightliftScene');
+        this.scene.start('menuScene');
         cutsceneState = 'start';
     }
 }

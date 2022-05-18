@@ -109,6 +109,7 @@ class Cutscene extends Phaser.Scene {
                 this.mainGuy.x++; 
                 this.mainGuy.x++;    // move the mc to the right more
             } else if (this.mainGuy.y < 350){
+                this.mainGuy.setDepth(1);
                 this.mainGuy.y++;
                 this.mainGuy.y++;    // move the mc down to the cool kids
             }else {

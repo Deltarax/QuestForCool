@@ -11,10 +11,11 @@ class Intro extends Phaser.Scene {
 
       this.bg = this.add.sprite(0,0, 'cutsceneBG').setOrigin(0, 0);
 
-      this.add.text(10, game.config.height/2 - 200, "Johnson has always been alone", mediumConfig);
-      this.add.text(10, game.config.height/2 - 100, "he spends all day playing games", mediumConfig);
-      this.add.text(10, game.config.height/2, "and wishing he could hang with the popular kids", mediumConfig);
-      this.add.text(10, game.config.height/2 + 100, "but before he can talk to them, he needs to be like them", mediumConfig);
+      this.add.text(10, game.config.height/2 - 150, "Johnson has always been alone.", mediumConfig);
+      this.add.text(10, game.config.height/2 - 100, "He spends all day playing games,", mediumConfig);
+      this.add.text(10, game.config.height/2 - 50, "and wishing he could hang with the popular kids.", mediumConfig);
+      this.add.text(10, game.config.height/2 + 0, "He believes that before he can talk to them,", mediumConfig);
+      this.add.text(10, game.config.height/2 + 50, "he needs to be like them", mediumConfig);
 
       // Create the green arrow, link it to next scene, and hide it before it's needed.
       this.nextArrow = this.add.sprite(50, 500, 'arrow').setAlpha(1).setScale(2);
