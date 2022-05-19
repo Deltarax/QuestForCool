@@ -20,7 +20,7 @@ class Weightlift extends Phaser.Scene {
         });
         // click on a Game Object
         this.input.on('gameobjectdown', (pointer, gameObject, event) => {
-            cutsceneState = 'end';
+            cutsceneState = 'mirror';
             this.scene.start('cutScene');
         });
 
@@ -34,6 +34,7 @@ class Weightlift extends Phaser.Scene {
 
         // flag for weightlifting
         this.weightdownFlag = true;
+        this.gameOver = false;
 
         this.weightTicks = 0;   // Tracking time for loss of progress
         this.weightScore = 0;   // Tracking GAINS
@@ -69,18 +70,34 @@ class Weightlift extends Phaser.Scene {
         }
 
         // Progress slowly goes down over time.
-        if (this.weightTicks >= 100){
-            this.weightTicks = 0;
-            if (this.weightScore > 0){
-                this.weightScore--;
-                this.scoreText.setText('Gains: ' + this.weightScore);
+        if (!this.gameOver){
+            if (this.weightTicks >= 20){
+                if (this.weightScore > 30){
+                    this.weightTicks = 0;
+                    this.weightScore--;
+                    this.scoreText.setText('Gains: ' + this.weightScore);
+                }
+            }
+            if (this.weightTicks >= 50){
+                if (this.weightScore > 15){
+                    this.weightTicks = 0;
+                    this.weightScore--;
+                    this.scoreText.setText('Gains: ' + this.weightScore);
+                }
+            }
+            if (this.weightTicks >= 100){
+                this.weightTicks = 0;
+                if (this.weightScore > 0){
+                    this.weightScore--;
+                    this.scoreText.setText('Gains: ' + this.weightScore);
+                }
             }
         }
-
         // When sufficiently strong end game
         if (this.weightScore >= 50){
-            cutsceneState = 'end';
+            this.gameOver = true;
             this.nextArrow.setAlpha(1);
+            this.scoreText.setText('Nice Job!');
         }
         
     }
