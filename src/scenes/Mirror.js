@@ -69,8 +69,6 @@ class Mirror extends Phaser.Scene {
                 this.nextArrow.setAlpha(1);
             }   
         });
-
-
     }
 
     update() {

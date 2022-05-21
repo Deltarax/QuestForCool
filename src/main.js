@@ -12,7 +12,7 @@ let config = {
         target: 60,
         forceSetTimeOut: true
     }, 
-    scene: [ Load, Menu, Weightlift, Cutscene, Mirror, Intro, End ]
+    scene: [ Load, Menu, Weightlift, Cutscene, Mirror, Intro, End, Maze ]
 }
 
 let textConfig = {
