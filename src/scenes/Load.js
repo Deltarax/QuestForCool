@@ -17,6 +17,7 @@ class Load extends Phaser.Scene {
         this.load.image('cutsceneMC', './assets/tempCutsceneMC.png');
         this.load.image('cutsceneCoolKids', './assets/tempCoolKids.png');
         this.load.image('arrow', './assets/arrow.png');
+        this.load.image('corn', './assets/tempCorn.png');
         this.load.image('weightSpeechBubble', './assets/tempWeightSpeech.png');
         this.load.image('mirrorSpeechBubble', './assets/tempMirrorSpeech.png');
         this.load.image('endSpeechBubble', './assets/tempEndSpeech.png');
@@ -34,7 +35,7 @@ class Load extends Phaser.Scene {
     update(){
         console.log('loading');
 
-        this.scene.start('menuScene');
+        this.scene.start('mazeScene');
         cutsceneState = 'start';
     }
 }
