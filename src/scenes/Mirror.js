@@ -66,9 +66,15 @@ class Mirror extends Phaser.Scene {
             }   
             if (combo === thirdCombo) {
                 this.thirdPhrase.setAlpha(0);
+                this.successBackground.setAlpha(1);
+                this.successMessage.setAlpha(1);
                 this.nextArrow.setAlpha(1);
             }   
         });
+
+        // Add Success message
+        this.successBackground = this.add.rectangle(450, 275, 1200, 300, '0xFFFFFF').setAlpha(0);
+        this.successMessage = this.add.text(game.config.width/2, game.config.height/2, 'Success!', successConfig).setOrigin(0.5,0.5).setAlpha(0);
     }
 
     update() {
