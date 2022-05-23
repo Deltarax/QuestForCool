@@ -26,7 +26,7 @@ class Mirror extends Phaser.Scene {
         });
         // click on a Game Object
         this.input.on('gameobjectdown', (pointer, gameObject, event) => {
-            cutsceneState = 'end';
+            cutsceneState = 'maze';
             this.scene.start('cutScene');
         });
 

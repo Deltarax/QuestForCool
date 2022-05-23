@@ -71,5 +71,4 @@ let game = new Phaser.Game(config);
 
 let keyF, keyR, keyLEFT, keyRIGHT, keyUP, keyDOWN, keySPACE;
 
-let cutscenePossibleStates = ['start', 'end'];
 let cutsceneState = 'start';

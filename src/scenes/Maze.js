@@ -104,7 +104,6 @@ class Maze extends Phaser.Scene {
         console.log('hit');
         this.mazeHead.x = 25;
         this.mazeHead.y = 320;
-
     }
 
 }
