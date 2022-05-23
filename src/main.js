@@ -58,7 +58,7 @@ let successConfig = {
     fontFamily: 'Roboto',
     fontSize: '240px',
     backgroundColor: '#FFFFFF',
-    color: '#00FF00',
+    color: '#00BB00',
     align: 'right',
     padding: {
     top: 5,
