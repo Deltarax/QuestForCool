@@ -7,8 +7,7 @@ class Maze extends Phaser.Scene {
         console.log("we in maze mode");
 
         //flags for simple sprite animation
-        this.mouthTicks = 0;
-        this.mouthOpen = true;
+        this.gameOver = false;
 
         // text configuration
         this.add.text(50, 25, "Use Arrow keys to move!     Don't touch the walls!", smallConfig);
@@ -51,6 +50,8 @@ class Maze extends Phaser.Scene {
             }
         }
 
+        // So we can see the next arrow
+        this.whiteRectangle = this.add.rectangle(60, 500, 120, 80, '0xFFFFFF').setAlpha(0);
 
         // Create the green arrow, link it to next scene, and hide it before it's needed.
         this.nextArrow = this.add.sprite(50, 500, 'arrow').setAlpha(0).setScale(2);
@@ -63,27 +64,40 @@ class Maze extends Phaser.Scene {
             this.scene.start('cutScene');
         });
 
+        // Add Success message
+        this.successBackground = this.add.rectangle(450, 275, 1200, 300, '0xFFFFFF').setAlpha(0);
+        this.successMessage = this.add.text(game.config.width/2, game.config.height/2, 'Success!', successConfig).setOrigin(0.5,0.5).setAlpha(0);
+
 
     }
 
     update() {
 
-        this.physics.world.collide(this.mazeHead, this.cornMaze, this.cornCollision, null, this);
+        this.physics.world.overlap(this.mazeHead, this.cornMaze, this.cornCollision, null, this);
 
-        if (this.arrowkeys.up.isDown) {
-            this.mazeHead.y--;
-            this.mazeHead.y--;
-        } else if (this.arrowkeys.down.isDown) {
-            this.mazeHead.y++;
-            this.mazeHead.y++;
-        } else if (this.arrowkeys.left.isDown) {
-            this.mazeHead.x--;
-            this.mazeHead.x--;
-        } else if (this.arrowkeys.right.isDown) {
-            this.mazeHead.x++;
-            this.mazeHead.x++;
+        if (!this.gameOver){
+            if (this.arrowkeys.up.isDown) {
+                this.mazeHead.y--;
+                this.mazeHead.y--;
+            } else if (this.arrowkeys.down.isDown) {
+                this.mazeHead.y++;
+                this.mazeHead.y++;
+            } else if (this.arrowkeys.left.isDown) {
+                this.mazeHead.x--;
+                this.mazeHead.x--;
+            } else if (this.arrowkeys.right.isDown) {
+                this.mazeHead.x++;
+                this.mazeHead.x++;
+            }
         }
         
+        if(this.mazeHead.x > 880){
+            this.gameOver = true;
+            this.successMessage.setAlpha(1);
+            this.successBackground.setAlpha(1);
+            // this.whiteRectangle.setAlpha(1);
+            this.nextArrow.setAlpha(1);
+        }
     }
 
     cornCollision() {

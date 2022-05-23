@@ -6,7 +6,7 @@ let config = {
     backgroundColor: '#FFFFFF',
     physics: {
         default: 'arcade',
-        arcade: { debug: true }
+        arcade: { debug: false }
     },
     fps: {
         target: 60,
@@ -46,6 +46,19 @@ let mediumConfig = {
     fontSize: '40px',
     // backgroundColor: '#FFFFFF',
     color: '#000000',
+    align: 'right',
+    padding: {
+    top: 5,
+    bottom: 5,
+    },
+    fixedWidth: 0
+}
+
+let successConfig = {
+    fontFamily: 'Roboto',
+    fontSize: '240px',
+    backgroundColor: '#FFFFFF',
+    color: '#00FF00',
     align: 'right',
     padding: {
     top: 5,
