@@ -22,21 +22,20 @@ class Cutscene extends Phaser.Scene {
 
         // Sprites for cutscene
         this.bg = this.add.sprite(0,0, 'cutsceneBG').setOrigin(0, 0);
-        this.mainGuy = this.add.sprite(100, 150, 'cutsceneMC').setOrigin(0.5,0.5);
-        this.coolKids = this.add.sprite(700, 350, 'cutsceneCoolKids').setOrigin(0.5,0.5);
-        this.coolBench = this.add.sprite(250,230, 'coolBench').setOrigin(0,0);
-        this.mcBench = this.add.sprite(0,0, 'mcBench').setOrigin(0,0);
+        this.mainGuy = this.add.sprite(180, 180, 'cutsceneMC').setOrigin(0.5,0.5).setScale(.3);
+        this.coolBench = this.add.sprite(250,180, 'coolBench').setOrigin(0,0);
+        this.mcBench = this.add.sprite(220,290, 'mcBench').setOrigin(0.5, 0.5);
         this.teardrop = this.add.sprite(280, 50, 'teardrop').setOrigin(0.5,0.5).setAlpha(0);
 
         // checks what kind of cutscene we are in, and puts appropriate text
         if (cutsceneState == 'start'){
-            this.speechBubble = this.add.sprite(800, 200, 'weightSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
+            this.speechBubble = this.add.sprite(850, 160, 'weightSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
         } else if (cutsceneState == 'mirror'){
-            this.speechBubble = this.add.sprite(800, 200, 'mirrorSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
+            this.speechBubble = this.add.sprite(850, 160, 'mirrorSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
         } else if (cutsceneState == 'maze'){
-            this.speechBubble = this.add.sprite(800, 200, 'mazeSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
+            this.speechBubble = this.add.sprite(850, 160, 'mazeSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
         } else if (cutsceneState == 'end'){
-            this.speechBubble = this.add.sprite(800, 200, 'endSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
+            this.speechBubble = this.add.sprite(850, 160, 'endSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
             this.surprise = this.add.sprite(280, 50, 'surprise').setOrigin(0.5,0.5).setAlpha(0);
         }
         
