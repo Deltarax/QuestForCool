@@ -21,6 +21,7 @@ class Load extends Phaser.Scene {
         this.load.image('weightSpeechBubble', './assets/tempWeightSpeech.png');
         this.load.image('mirrorSpeechBubble', './assets/tempMirrorSpeech.png');
         this.load.image('mazeSpeechBubble', './assets/tempMazeSpeech.png');
+        this.load.image('hurdleSpeechBubble', './assets/tempHurdleSpeech.png');
         this.load.image('endSpeechBubble', './assets/tempEndSpeech.png');
         this.load.image('teardrop', './assets/tempTeardrop.png');
         this.load.image('surprise', './assets/tempSurprise.png');
@@ -36,7 +37,7 @@ class Load extends Phaser.Scene {
     update(){
         console.log('loading');
 
-        this.scene.start('mazeScene');
+        this.scene.start('hurdleScene');
         cutsceneState = 'start';
     }
 }

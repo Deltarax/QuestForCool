@@ -35,6 +35,8 @@ class Cutscene extends Phaser.Scene {
             this.speechBubble = this.add.sprite(800, 200, 'mirrorSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
         } else if (cutsceneState == 'maze'){
             this.speechBubble = this.add.sprite(800, 200, 'mazeSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
+        } else if (cutsceneState == 'hurdle'){
+            this.speechBubble = this.add.sprite(800, 200, 'hurdleSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
         } else if (cutsceneState == 'end'){
             this.speechBubble = this.add.sprite(800, 200, 'endSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
             this.surprise = this.add.sprite(280, 50, 'surprise').setOrigin(0.5,0.5).setAlpha(0);
@@ -54,6 +56,8 @@ class Cutscene extends Phaser.Scene {
                 this.scene.start("mirrorScene");
             } else if (cutsceneState == 'maze'){
                 this.scene.start("mazeScene");
+            } else if (cutsceneState == 'hurdle'){
+                this.scene.start("hurdleScene");
             } else if (cutsceneState == 'end'){
                 this.scene.start("endScene");
             }
