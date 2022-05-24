@@ -98,6 +98,15 @@ class Maze extends Phaser.Scene {
             // this.whiteRectangle.setAlpha(1);
             this.nextArrow.setAlpha(1);
         }
+
+        // CHEAT TO END
+        if(this.arrowkeys.down.isDown && this.arrowkeys.right.isDown){
+            this.gameOver = true;
+            this.successMessage.setAlpha(1);
+            this.successBackground.setAlpha(1);
+            // this.whiteRectangle.setAlpha(1);
+            this.nextArrow.setAlpha(1);
+        }
     }
 
     cornCollision() {
