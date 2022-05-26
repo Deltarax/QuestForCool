@@ -4,7 +4,7 @@ class Hurdle extends Phaser.Scene {
   }
 
   create() {
-    this.hurdleSprite = this.add.sprite(250, 250, 'hurdleMC').setOrigin(0, 0);
+    // this.hurdleSprite = this.add.sprite(250, 250, 'hurdleMC').setOrigin(0, 0);
     this.hurdle = this.add.sprite(0, 0, 'hurdle').setOrigin(0, 0);
     this.hurdleBG = this.add.tileSprite(0, 0, 960, 540, 'hurdleBG').setOrigin(0, 0);
 
@@ -21,6 +21,8 @@ class Hurdle extends Phaser.Scene {
         cutsceneState = 'end';
         this.scene.start('cutScene');
     });
+
+    this.hurdleSprite = this.add.sprite(250, 250, 'hurdleMC').setOrigin(0, 0);
   }
 
   update() {
