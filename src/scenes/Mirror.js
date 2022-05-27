@@ -54,6 +54,10 @@ class Mirror extends Phaser.Scene {
         this.secondPhrase = this.add.text(450, 300, "I am funny", smallConfig).setAlpha(0);
         this.thirdPhrase = this.add.text(450, 300, "I can talk to them", smallConfig).setAlpha(0);
 
+
+        this.add.dom(450, 400, "input");
+
+
         // watch for keycombomatches
         this.input.keyboard.on('keycombomatch', (combo, event) => {
             if (combo === firstCombo) { 

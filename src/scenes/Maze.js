@@ -15,27 +15,34 @@ class Maze extends Phaser.Scene {
 
         // adds Main charecter sprites
         this.mazeHead = this.physics.add.sprite(25, 320, 'mazeHead').setOrigin(0.5, 0.5).setScale(0.25);
-        this.mazeHead.body.setCircle(55).setOffset(10,10);
+        this.mazeHead.body.setCircle(this.mazeHead.width / 2);
         this.mazeHead.setCollideWorldBounds(true);
+        this.mazeHead.setInteractive({
+            draggable: true,
+            useHandCursor: true
+        });
+        // this.mazeHead.body.immovable = true;
 
         // create arrowkeys
         this.arrowkeys = this.input.keyboard.createCursorKeys();
 
         // Create the corn maze block group
-        this.cornMaze = this.add.group();
+        this.cornMaze = this.add.group({
+            runChildUpdate: true    // make sure update runs on group children
+        });
 
         // Matrix for maze layout (1 = wall, 0 = path)
         this.mazeMatrix = [
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             [1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1],
-            [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1],
-            [1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0],
-            [1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0],
+            [1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1],
+            [1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0],
+            [1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0],
             [0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0],
+            [1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0],
             [1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0],
             [1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         ];
         
@@ -45,6 +52,7 @@ class Maze extends Phaser.Scene {
                 if (this.mazeMatrix[i][j] == 1){
                     // this.add.rectangle(70 + (j * 40), 120 + (i * 40), 40, 40, 0x005500);
                     let corn = this.physics.add.sprite(20 + (j * 40), 120 + (i * 40), 'corn');
+                    corn.body.immovable = true;
                     this.cornMaze.add(corn);
                 }
             }
@@ -60,25 +68,36 @@ class Maze extends Phaser.Scene {
         });
         // click on a Game Object
         this.input.on('gameobjectdown', (pointer, gameObject, event) => {
-            cutsceneState = 'hurdle';
-            this.scene.start('cutScene');
+            if (gameObject == this.nextArrow){
+                cutsceneState = 'end';
+                this.scene.start('cutScene');
+            }
         });
 
         // Add Success message
         this.successBackground = this.add.rectangle(450, 275, 1200, 300, '0xFFFFFF').setAlpha(0);
         this.successMessage = this.add.text(game.config.width/2, game.config.height/2, 'Success!', successConfig).setOrigin(0.5,0.5).setAlpha(0);
 
+        this.mazeHead.on('drag', (pointer, dragX, dragY) => {
+            this.mazeHead.x = dragX;
+            this.mazeHead.y = dragY;
+            // this.printMessage(`Dragging ${this.burrito.texture.key}...`);
+        });
+
+        // this.physics.add.collider(this.mazeHead, this.cornMaze, this.cornCollision, null, this);
+
 
     }
 
     update() {
 
-        this.physics.world.overlap(this.mazeHead, this.cornMaze, this.cornCollision, null, this);
+        this.physics.world.collide(this.mazeHead, this.cornMaze, this.cornCollision, null, this);
 
         if (!this.gameOver){
             if (this.arrowkeys.up.isDown) {
-                this.mazeHead.y--;
-                this.mazeHead.y--;
+                this.mazeHead.setVelocityY(-200);
+                // this.mazeHead.y--;
+                // this.mazeHead.y--;
             } else if (this.arrowkeys.down.isDown) {
                 this.mazeHead.y++;
                 this.mazeHead.y++;
@@ -91,7 +110,7 @@ class Maze extends Phaser.Scene {
             }
         }
         
-        if(this.mazeHead.x > 880){
+        if(this.mazeHead.x > 900){
             this.gameOver = true;
             this.successMessage.setAlpha(1);
             this.successBackground.setAlpha(1);
@@ -100,7 +119,7 @@ class Maze extends Phaser.Scene {
         }
 
         // CHEAT TO END
-        if(this.arrowkeys.down.isDown && this.arrowkeys.right.isDown){
+        if(this.arrowkeys.left.isDown && this.arrowkeys.right.isDown){
             this.gameOver = true;
             this.successMessage.setAlpha(1);
             this.successBackground.setAlpha(1);
@@ -111,8 +130,16 @@ class Maze extends Phaser.Scene {
 
     cornCollision() {
         console.log('hit');
-        this.mazeHead.x = 25;
-        this.mazeHead.y = 320;
+        this.mazeHead.setInteractive({
+            draggable: false,
+            useHandCursor: false
+        });
+        // this.mazeHead.x = 25;
+        // this.mazeHead.y = 320;
+        this.mazeHead.setInteractive({
+            draggable: true,
+            useHandCursor: true
+        });
     }
 
 }
