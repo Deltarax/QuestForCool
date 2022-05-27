@@ -21,7 +21,7 @@ class Hurdle extends Phaser.Scene {
 
     this.inAir = false;
 
-    this.nextArrow = this.add.sprite(50, 500, 'arrow').setAlpha(0).setScale(2);
+    this.nextArrow = this.add.sprite(50, 500, 'arrow').setAlpha(1).setScale(2);
     this.nextArrow.setInteractive({
         useHandCursor: true,
     });
