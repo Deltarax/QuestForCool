@@ -11,8 +11,8 @@ class Menu extends Phaser.Scene {
 
       this.bg = this.add.sprite(0,0, 'cutsceneBG').setOrigin(0, 0);
 
-      this.add.text(10, game.config.height/2 - 100, "Quest for Cool (tentative)", textConfig);
-      this.add.text(10, game.config.height/2, "Press the green arrow to begin!", smallConfig);
+      this.add.text(game.config.width/2, game.config.height/2 - 100, "Quest for Cool", textConfig).setOrigin(0.5,0.5);
+      this.add.text(game.config.width/2, game.config.height/2, "Press the green arrow to begin!", smallConfig).setOrigin(0.5,0.5);
 
       // Create the green arrow, link it to next scene, and hide it before it's needed.
       this.nextArrow = this.add.sprite(50, 500, 'arrow').setAlpha(1).setScale(2);

@@ -15,7 +15,7 @@ let config = {
     dom: {
         createContainer: true
     },
-    scene: [ Load, Menu, Weightlift, Cutscene, Mirror, Intro, End, Maze, Hurdle]
+    scene: [ Load, Menu, Weightlift, Cutscene, Mirror, Intro, End, Maze, Hurdle, Credit]
 }
 
 let textConfig = {

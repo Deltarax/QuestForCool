@@ -12,11 +12,11 @@ class Intro extends Phaser.Scene {
       this.bg = this.add.sprite(0,0, 'cutsceneBG').setOrigin(0, 0);
 
       let texts = [
-        this.add.text(10, game.config.height/2 - 150, "Hank has always been alone.", mediumConfig),
-        this.add.text(10, game.config.height/2 - 100, "He spends all day playing games,", mediumConfig),
-        this.add.text(10, game.config.height/2 - 50, "and wishing he could hang with the popular kids.", mediumConfig),
-        this.add.text(10, game.config.height/2 + 0, "Yet he believes that before he can talk to them,", mediumConfig),
-        this.add.text(10, game.config.height/2 + 50, "he needs to be like them", mediumConfig)
+        this.add.text(game.config.width/2, game.config.height/2 - 150, "Hank has always been alone.", mediumConfig).setOrigin(0.5,0.5),
+        this.add.text(game.config.width/2, game.config.height/2 - 100, "He spends all day playing games,", mediumConfig).setOrigin(0.5,0.5),
+        this.add.text(game.config.width/2, game.config.height/2 - 50, "and wishing he could hang with the popular kids.", mediumConfig).setOrigin(0.5,0.5),
+        this.add.text(game.config.width/2, game.config.height/2 + 0, "Yet he believes that before he can talk to them,", mediumConfig).setOrigin(0.5,0.5),
+        this.add.text(game.config.width/2, game.config.height/2 + 50, "he needs to be like them.", mediumConfig).setOrigin(0.5,0.5)
       ];
 
       for (let i = 0; i < texts.length; i++){
