@@ -63,6 +63,16 @@ class Cutscene extends Phaser.Scene {
             }
         });
 
+        this.tweens.add({
+
+            targets: this.nextArrow,
+            scale: 2.2,
+            duration: 500,
+            yoyo: true,
+            repeat: -1
+    
+          });
+
     }
 
     update() {

@@ -121,6 +121,16 @@ class Maze extends Phaser.Scene {
             // this.whiteRectangle.setAlpha(1);
             this.nextArrow.setAlpha(1);
         }
+
+        this.tweens.add({
+
+            targets: this.nextArrow,
+            scale: 2.2,
+            duration: 500,
+            yoyo: true,
+            repeat: -1
+    
+          });
     }
 
     cornCollision() {

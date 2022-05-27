@@ -33,12 +33,15 @@ class Load extends Phaser.Scene {
 
         // music and sound
         this.load.audio('weights', './assets/weightsSFX.wav')
+
+        //html elements
+        this.load.html('nameform', 'assets/nameform.html');
     }
 
     update(){
         console.log('loading');
 
-        this.scene.start('introScene');
+        this.scene.start('mirrorScene');
         cutsceneState = 'start';
     }
 }

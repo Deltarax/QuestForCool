@@ -24,6 +24,16 @@ class Menu extends Phaser.Scene {
           this.scene.start('introScene');
       });
 
+      this.tweens.add({
+
+        targets: this.nextArrow,
+        scale: 2.2,
+        duration: 500,
+        yoyo: true,
+        repeat: -1
+
+      });
+
 
     }
   }
