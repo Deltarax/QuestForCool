@@ -4,13 +4,22 @@ class Hurdle extends Phaser.Scene {
   }
 
   create() {
-    this.hurdleSprite = this.add.sprite(250, 250, 'hurdleMC').setOrigin(0, 0);
-    this.hurdle = this.add.sprite(0, 0, 'hurdle').setOrigin(0, 0);
     this.hurdleBG = this.add.tileSprite(0, 0, 960, 540, 'hurdleBG').setOrigin(0, 0);
+    this.hurdleSprite = this.physics.add.sprite(225, 370, 'hurdleMC').setOrigin(0, 0);
+    this.hurdle = this.physics.add.sprite(850, 460, 'hurdle').setOrigin(0, 0).setVelocityX(-300);
+
+    this.hurdleSprite.setCollideWorldBounds(true);
+    this.hurdleSprite.setGravityY(650);
+    this.hurdleSprite.body.setSize(80, 170, 20, 10);
+
+    this.hurdle.body.setSize(82, 80, 10, 0);
 
     keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-    this.score = 0;
+    this.hurdleScore = 0;
+    this.scoreText = this.add.text(0, 0, 'Leaps: ' + this.hurdleScore, smallConfig);
+
+    this.inAir = false;
 
     this.nextArrow = this.add.sprite(50, 500, 'arrow').setAlpha(0).setScale(2);
     this.nextArrow.setInteractive({
@@ -24,13 +33,25 @@ class Hurdle extends Phaser.Scene {
   }
 
   update() {
+    this.physics.world.overlap(this.hurdleSprite, this.hurdle, this.hurdleCollision, null, this);
+
     this.hurdleBG.tilePositionX -= 3;
     if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
-      if (this.hurdleSprite.positionY != 900) {
-        this.hurdleSprite.positionY += 20;
-      } else {
-        this.hurdleSprite.positionY -= 20;
-      };
+      if (this.inAir == false) {
+        this.inAir = true;
+        this.hurdleSprite.setVelocityY(-400);
+      }
+      //this.hurdleScore += 1;
+      //this.scoreText.setText('Leaps: ' + this.hurdleScore);
+    }
+
+    //destroy hurdles
+    if (this.hurdle.x < -100){
+      this.hurdle.destroy();
     }
   }
+
+  hurdleCollision() {
+    console.log('hit');
+  } 
 }

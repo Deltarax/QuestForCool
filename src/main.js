@@ -6,7 +6,7 @@ let config = {
     backgroundColor: '#FFFFFF',
     physics: {
         default: 'arcade',
-        arcade: { debug: false }
+        arcade: { debug: true }
     },
     fps: {
         target: 60,
