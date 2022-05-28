@@ -12,7 +12,10 @@ let config = {
         target: 60,
         forceSetTimeOut: true
     }, 
-    scene: [ Load, Menu, Weightlift, Cutscene, Mirror, Intro, End, Maze, Hurdle]
+    dom: {
+        createContainer: true
+    },
+    scene: [ Load, Menu, Weightlift, Cutscene, Mirror, Intro, End, Maze, Hurdle, Credit]
 }
 
 let textConfig = {
@@ -72,3 +75,5 @@ let game = new Phaser.Game(config);
 let keyF, keyR, keyLEFT, keyRIGHT, keyUP, keyDOWN, keySPACE;
 
 let cutsceneState = 'start';
+
+let element;

@@ -55,7 +55,33 @@ class Mirror extends Phaser.Scene {
         this.thirdPhrase = this.add.text(450, 300, "I can talk to them", smallConfig).setAlpha(0);
 
 
-        this.add.dom(450, 400, "input");
+        // this.textBox = this.add.dom(450, 400).createFromCache('nameform');
+
+        let element = this.add.dom(400, 400).createFromCache('nameform');
+
+        element.addListener('click');
+
+        element.on('click', function (event) {
+
+            if (event.target.name === 'playButton')
+            {
+                let inputText = this.getChildByName('nameField');
+
+                //  Have they entered anything?
+                if (inputText.value !== '')
+                {
+                    //  Turn off the click events
+                    this.removeListener('click');
+
+                    //  Hide the login element
+                    this.setVisible(false);
+
+                    // //  Populate the text with whatever they typed in
+                    // text.setText('Welcome ' + inputText.value);
+                }
+            }
+
+        });
 
 
         // watch for keycombomatches
@@ -79,6 +105,16 @@ class Mirror extends Phaser.Scene {
         // Add Success message
         this.successBackground = this.add.rectangle(450, 275, 1200, 300, '0xFFFFFF').setAlpha(0);
         this.successMessage = this.add.text(game.config.width/2, game.config.height/2, 'Success!', successConfig).setOrigin(0.5,0.5).setAlpha(0);
+
+        this.tweens.add({
+
+            targets: this.nextArrow,
+            scale: 2.2,
+            duration: 500,
+            yoyo: true,
+            repeat: -1
+    
+          });
     }
 
     update() {

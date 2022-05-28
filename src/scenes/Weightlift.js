@@ -48,6 +48,15 @@ class Weightlift extends Phaser.Scene {
         this.successBackground = this.add.rectangle(450, 275, 1200, 300, '0xFFFFFF').setAlpha(0);
         this.successMessage = this.add.text(game.config.width/2, game.config.height/2, 'Success!', successConfig).setOrigin(0.5,0.5).setAlpha(0);
 
+        this.tweens.add({
+
+            targets: this.nextArrow,
+            scale: 2.2,
+            duration: 500,
+            yoyo: true,
+            repeat: -1
+    
+          });
     }
 
     update() {

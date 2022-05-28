@@ -96,17 +96,12 @@ class Maze extends Phaser.Scene {
         if (!this.gameOver){
             if (this.arrowkeys.up.isDown) {
                 this.mazeHead.setVelocityY(-200);
-                // this.mazeHead.y--;
-                // this.mazeHead.y--;
             } else if (this.arrowkeys.down.isDown) {
-                this.mazeHead.y++;
-                this.mazeHead.y++;
+                this.mazeHead.setVelocityY(200);
             } else if (this.arrowkeys.left.isDown) {
-                this.mazeHead.x--;
-                this.mazeHead.x--;
+                this.mazeHead.setVelocityX(-200);
             } else if (this.arrowkeys.right.isDown) {
-                this.mazeHead.x++;
-                this.mazeHead.x++;
+                this.mazeHead.setVelocityX(200);
             }
         }
         
@@ -126,6 +121,16 @@ class Maze extends Phaser.Scene {
             // this.whiteRectangle.setAlpha(1);
             this.nextArrow.setAlpha(1);
         }
+
+        this.tweens.add({
+
+            targets: this.nextArrow,
+            scale: 2.2,
+            duration: 500,
+            yoyo: true,
+            repeat: -1
+    
+          });
     }
 
     cornCollision() {
