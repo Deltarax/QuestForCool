@@ -8,9 +8,12 @@ class Weightlift extends Phaser.Scene {
 
         // text configuration
 
+        // weightlift background
+        this.weightliftBG = this.add.sprite(0,0, 'weightliftBG').setOrigin(0,0);
+
         // adds weightlifter down and up
-        this.weightliftDown = this.add.sprite(300, 300, 'weightliftDown').setAlpha(1);
-        this.weightliftUp = this.add.sprite(300, 300, 'weightliftUp').setAlpha(0);
+        this.weightliftDown = this.add.sprite(0,0, 'weightliftDown').setAlpha(1).setOrigin(0,0);
+        this.weightliftUp = this.add.sprite(0,0, 'weightliftUp').setAlpha(0).setOrigin(0,0);
 
 
         // Create the green arrow, link it to next scene, and hide it before it's needed.
