@@ -14,7 +14,7 @@ class Maze extends Phaser.Scene {
         // this.add.text(50, 75, "Don't touch the walls!", smallConfig);
 
         // adds Main charecter sprites
-        this.mazeHead = this.physics.add.sprite(25, 320, 'mazeHead').setOrigin(0.5, 0.5).setScale(0.25);
+        this.mazeHead = this.physics.add.sprite(25, 320, 'mazeHead').setOrigin(0.5, 0.5).setScale(0.12);
         this.mazeHead.body.setCircle(this.mazeHead.width / 2);
         this.mazeHead.setCollideWorldBounds(true);
         this.mazeHead.setInteractive({
