@@ -54,34 +54,21 @@ class Mirror extends Phaser.Scene {
         this.secondPhrase = this.add.text(450, 300, "I am funny", smallConfig).setAlpha(0);
         this.thirdPhrase = this.add.text(450, 300, "I can talk to them", smallConfig).setAlpha(0);
 
+        this.playerProgress = 0;
+
+        this.playerText = this.add.text(450, 400, "Type here", smallConfig);
+
+        this.input.keyboard.on('keydown', event => {
+
+            console.log(event);
+            this.playerProgress++;
+            this.playerText.setText("I am cool \n I am funny \n I can talk to them".substring(0, this.playerProgress));
+
+        });
+
 
         // this.textBox = this.add.dom(450, 400).createFromCache('nameform');
 
-        let element = this.add.dom(400, 400).createFromCache('nameform');
-
-        element.addListener('click');
-
-        element.on('click', function (event) {
-
-            if (event.target.name === 'playButton')
-            {
-                let inputText = this.getChildByName('nameField');
-
-                //  Have they entered anything?
-                if (inputText.value !== '')
-                {
-                    //  Turn off the click events
-                    this.removeListener('click');
-
-                    //  Hide the login element
-                    this.setVisible(false);
-
-                    // //  Populate the text with whatever they typed in
-                    // text.setText('Welcome ' + inputText.value);
-                }
-            }
-
-        });
 
 
         // watch for keycombomatches

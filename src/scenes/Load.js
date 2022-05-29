@@ -41,7 +41,7 @@ class Load extends Phaser.Scene {
     update(){
         console.log('loading');
 
-        this.scene.start('creditScene');
+        this.scene.start('mirrorScene');
         cutsceneState = 'start';
     }
 }
