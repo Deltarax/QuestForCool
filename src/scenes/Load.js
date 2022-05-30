@@ -30,12 +30,16 @@ class Load extends Phaser.Scene {
         this.load.image('mazeHead', './assets/mazeMC.png');
 
         this.load.image('hurdle', './assets/tempHurdle.png'); //temp
-        this.load.image('hurdleMC', './assets/hurdleRun.png');
+        this.load.image('hurdleRun', './assets/hurdleRun.png');
         this.load.image('hurdleJump', './assets/hurdleJump');
         this.load.image('hurdleBG', './assets/tempHurdleBG.png'); //temp, might leave
 
         // music and sound
-        this.load.audio('weights', './assets/weightsSFX.wav')
+        this.load.audio('minigameBGM', './assets/minigame.mp3');
+        this.load.audio('weights', './assets/weightsSFX.wav');
+        this.load.audio('mirrorSuccess', './assets/mirrorSuccess.wav');
+        this.load.audio('jumpSFX', './assets/jumpSFX.wav');
+        this.load.audio('hurdleHit', './assets/hurdleHit.wav');
 
         //html elements
         this.load.html('nameform', 'assets/nameform.html');
@@ -44,7 +48,7 @@ class Load extends Phaser.Scene {
     update(){
         console.log('loading');
 
-        this.scene.start('mirrorScene');
+        this.scene.start('menuScene');
         cutsceneState = 'start';
     }
 }

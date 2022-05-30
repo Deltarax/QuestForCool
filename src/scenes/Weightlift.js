@@ -23,6 +23,7 @@ class Weightlift extends Phaser.Scene {
         });
         // click on a Game Object
         this.input.on('gameobjectdown', (pointer, gameObject, event) => {
+            this.BGM.stop();
             cutsceneState = 'mirror';
             this.scene.start('cutScene');
         });
@@ -46,6 +47,11 @@ class Weightlift extends Phaser.Scene {
         
         // sfx
         this.weightSFX = this.sound.add('weights', {volume: 0.2});
+
+        // bgm
+        this.BGM = this.sound.add('minigameBGM', {volume: 0.1});
+        this.BGM.setLoop(true);
+        this.BGM.play();
 
         // Add Success message
         this.successBackground = this.add.rectangle(450, 275, 1200, 300, '0xFFFFFF').setAlpha(0);

@@ -26,9 +26,18 @@ class Mirror extends Phaser.Scene {
         });
         // click on a Game Object
         this.input.on('gameobjectdown', (pointer, gameObject, event) => {
+            this.BGM.stop();
             cutsceneState = 'maze';
             this.scene.start('cutScene');
         });
+
+        // SFX
+        this.mirrorSuccess = this.sound.add('mirrorSuccess', {volume: 0.3});
+
+        // BGM
+        this.BGM = this.sound.add('minigameBGM', {volume: 0.1});
+        this.BGM.setLoop(true);
+        this.BGM.play();
 
         // Taken from Nathan's lowKey
         let firstCombo = this.input.keyboard.createCombo('I am cool', {
@@ -75,14 +84,17 @@ class Mirror extends Phaser.Scene {
         this.input.keyboard.on('keycombomatch', (combo, event) => {
             if (combo === firstCombo) { 
                 this.firstPhrase.setAlpha(0);
+                this.mirrorSuccess.play();
                 this.secondPhrase.setAlpha(1);
             }
             if (combo === secondCombo) {
                 this.secondPhrase.setAlpha(0);
+                this.mirrorSuccess.play();
                 this.thirdPhrase.setAlpha(1);
             }   
             if (combo === thirdCombo) {
                 this.thirdPhrase.setAlpha(0);
+                this.mirrorSuccess.play();
                 this.successBackground.setAlpha(1);
                 this.successMessage.setAlpha(1);
                 this.nextArrow.setAlpha(1);

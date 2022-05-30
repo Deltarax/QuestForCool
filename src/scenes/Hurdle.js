@@ -6,16 +6,16 @@ class Hurdle extends Phaser.Scene {
   create() {
     //adding sprites
     this.hurdleBG = this.add.tileSprite(0, 0, 960, 540, 'hurdleBG').setOrigin(0, 0);
-    this.hurdleSprite = this.physics.add.sprite(225, 370, 'hurdleMC').setOrigin(0, 0);
+    this.hurdleSprite = this.physics.add.sprite(225, 370, 'hurdleRun').setOrigin(0, 0);
 
     this.hurdleGroup = this.add.group({
       runChildUpdate: true
     });
     this.hurdle = this.physics.add.sprite(850, 460, 'hurdle').setOrigin(0, 0).setVelocityX(-300);
-    for (let i = 1; i < 10; i++) {
-      let hurdle = this.physics.add.sprite(850, 460, 'hurdle').setOrigin(0, 0).setVelocityX(-300);;
-      this.hurdleGroup.add(hurdle);
-    };
+    //for (let i = 1; i < 10; i++) {
+      //let hurdle = this.physics.add.sprite(850, 460, 'hurdle').setOrigin(0, 0).setVelocityX(-300);;
+      //this.hurdleGroup.add(hurdle);
+    //};
     
     //hurdle sprite physics
     this.hurdleSprite.setCollideWorldBounds(true);
@@ -39,9 +39,19 @@ class Hurdle extends Phaser.Scene {
     });
         // click on a Game Object
     this.input.on('gameobjectdown', (pointer, gameObject, event) => {
+        this.BGM.stop();
         cutsceneState = 'end';
         this.scene.start('cutScene');
     });
+
+    // SFX
+    this.jumpSFX = this.sound.add('jumpSFX', {volume: 0.5});
+    this.hurdleHit = this.sound.add('hurdleHit', {volume: 0.3});
+
+    // BGM
+    this.BGM = this.sound.add('minigameBGM', {volume: 0.1});
+    this.BGM.setLoop(true);
+    this.BGM.play();
   }
 
   update() {
@@ -52,6 +62,8 @@ class Hurdle extends Phaser.Scene {
     if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
       if (this.hurdleSprite.y == 370) {
         this.hurdleSprite.setVelocityY(-400);
+        // this.hurdleSprite.setTexture();
+        this.jumpSFX.play();
       }
       //this.hurdleScore += 1;
       //this.scoreText.setText('Leaps: ' + this.hurdleScore);
@@ -65,5 +77,6 @@ class Hurdle extends Phaser.Scene {
 
   hurdleCollision() {
     this.hurdle.destroy();
+    this.hurdleHit.play();
   } 
 }

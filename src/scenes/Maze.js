@@ -69,6 +69,7 @@ class Maze extends Phaser.Scene {
         // click on a Game Object
         this.input.on('gameobjectdown', (pointer, gameObject, event) => {
             if (gameObject == this.nextArrow){
+                this.BGM.stop();
                 cutsceneState = 'hurdle';
                 this.scene.start('cutScene');
             }
@@ -86,7 +87,10 @@ class Maze extends Phaser.Scene {
 
         // this.physics.add.collider(this.mazeHead, this.cornMaze, this.cornCollision, null, this);
 
-
+        // BGM
+        this.BGM = this.sound.add('minigameBGM', {volume: 0.1});
+        this.BGM.setLoop(true);
+        this.BGM.play();
     }
 
     update() {
