@@ -47,19 +47,30 @@ class Cutscene extends Phaser.Scene {
         this.nextArrow.setInteractive({
             useHandCursor: true,
         });
+        this.restart = this.add.sprite(900, 30, 'restart').setAlpha(1).setScale(.5);
+        this.restart.setInteractive({
+            useHandCursor: true,
+        });
         // click on a Game Object
         this.input.on('gameobjectdown', (pointer, gameObject, event) => {
-            // depending on what cutscene, start the correct game
-            if (cutsceneState == 'start'){
-                this.scene.start("weightliftScene");
-            } else if (cutsceneState == 'mirror'){
-                this.scene.start("mirrorScene");
-            } else if (cutsceneState == 'maze'){
-                this.scene.start("mazeScene");
-            } else if (cutsceneState == 'hurdle'){
-                this.scene.start("hurdleScene");
-            } else if (cutsceneState == 'end'){
-                this.scene.start("endScene");
+            if (gameObject == this.nextArrow){
+                // depending on what cutscene, start the correct game
+                if (cutsceneState == 'start'){
+                    this.scene.start("weightliftScene");
+                } else if (cutsceneState == 'mirror'){
+                    this.scene.start("mirrorScene");
+                } else if (cutsceneState == 'maze'){
+                    this.scene.start("mazeScene");
+                } else if (cutsceneState == 'hurdle'){
+                    this.scene.start("hurdleScene");
+                } else if (cutsceneState == 'end'){
+                    this.scene.start("endScene");
+                }
+            }
+            
+            if (gameObject == this.restart){
+            cutsceneState = 'start';
+            this.scene.start('menuScene');
             }
         });
 

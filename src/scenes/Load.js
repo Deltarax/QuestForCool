@@ -10,6 +10,7 @@ class Load extends Phaser.Scene {
         this.load.image('mcBench', './assets/mcBenchF.png');
         this.load.image('cutsceneMC', './assets/MCF.png');
         this.load.image('arrow', './assets/arrow.png');
+        this.load.image('restart', './assets/tempRestart.png');
 
         this.load.image('weightliftDown', './assets/weightliftDown.png');
         this.load.image('weightliftUp', './assets/weightliftUp.png');

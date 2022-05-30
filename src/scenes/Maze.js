@@ -74,6 +74,10 @@ class Maze extends Phaser.Scene {
         this.nextArrow.setInteractive({
             useHandCursor: true,
         });
+        this.restart = this.add.sprite(900, 30, 'restart').setAlpha(1).setScale(.5);
+        this.restart.setInteractive({
+            useHandCursor: true,
+        });
         // click on a Game Object
         this.input.on('gameobjectdown', (pointer, gameObject, event) => {
             if (gameObject == this.nextArrow){
@@ -81,6 +85,10 @@ class Maze extends Phaser.Scene {
                 cutsceneState = 'hurdle';
                 this.scene.start('cutScene');
             }
+            if (gameObject == this.restart){
+                cutsceneState = 'start';
+                this.scene.start('menuScene');
+                }
         });
 
         // Add Success message
