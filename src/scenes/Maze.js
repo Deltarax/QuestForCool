@@ -21,6 +21,12 @@ class Maze extends Phaser.Scene {
             draggable: true,
             useHandCursor: true
         });
+
+        // add cool kid heads
+        this.CK1 = this.add.sprite(905, 300, 'CK1').setOrigin(0.5, 0.5).setScale(0.25);
+        this.CK2 = this.add.sprite(915, 355, 'CK2').setOrigin(0.5, 0.5).setScale(0.25);
+        this.CK3 = this.add.sprite(940, 320, 'CK3').setOrigin(0.5, 0.5).setScale(0.25);
+
         // this.mazeHead.body.immovable = true;
 
         // create arrowkeys
@@ -57,6 +63,8 @@ class Maze extends Phaser.Scene {
                 }
             }
         }
+
+  
 
         // So we can see the next arrow
         this.whiteRectangle = this.add.rectangle(60, 500, 120, 80, '0xFFFFFF').setAlpha(0);
