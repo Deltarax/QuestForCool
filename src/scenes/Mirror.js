@@ -11,8 +11,8 @@ class Mirror extends Phaser.Scene {
         this.mouthOpen = true;
 
         // text configuration
-        this.add.text(100, 50, "Type the following phrases to build charisma!", smallConfig);
-        this.add.text(100, 100, "Capitalization and spaces are important!", smallConfig);
+        this.add.text(100, 50, "Use the keyboard to type some encouragement to yourself!", smallConfig);
+        // this.add.text(100, 100, "Capitalization and spaces are important!", smallConfig);
 
         // adds Main charecter sprites
         this.mirrorOpen = this.add.sprite(300, 300, 'mirrorOpen').setAlpha(1);
@@ -40,38 +40,23 @@ class Mirror extends Phaser.Scene {
         this.BGM.play();
 
         // Taken from Nathan's lowKey
-        let firstCombo = this.input.keyboard.createCombo('I am cool', {
-            resetOnWrongKey: true,  // if they press the wrong key is the combo reset?
-            maxKeyDelay: 0,         // max delay (ms) between each key press (0 = disabled)
-            resetOnMatch: false,     // if matched before, does pressing first key of combo reset?
-            deleteOnMatch: true     // if combo matches, will it delete itself?
-        });
-        let secondCombo = this.input.keyboard.createCombo('I am funny', {
-            resetOnWrongKey: true,  // if they press the wrong key is the combo reset?
-            maxKeyDelay: 0,         // max delay (ms) between each key press (0 = disabled)
-            resetOnMatch: false,     // if matched before, does pressing first key of combo reset?
-            deleteOnMatch: true    // if combo matches, will it delete itself?
-        });
-        let thirdCombo = this.input.keyboard.createCombo('I can talk to them', {
-            resetOnWrongKey: true,  // if they press the wrong key is the combo reset?
-            maxKeyDelay: 0,         // max delay (ms) between each key press (0 = disabled)
-            resetOnMatch: false,     // if matched before, does pressing first key of combo reset?
-            deleteOnMatch: true    // if combo matches, will it delete itself?
-        });
-        
-        this.firstPhrase = this.add.text(450, 300, "I am cool", smallConfig).setAlpha(1);
-        this.secondPhrase = this.add.text(450, 300, "I am funny", smallConfig).setAlpha(0);
-        this.thirdPhrase = this.add.text(450, 300, "I can talk to them", smallConfig).setAlpha(0);
 
         this.playerProgress = 0;
 
-        this.playerText = this.add.text(450, 400, "Type here", smallConfig);
+        this.playerText = this.add.text(450, 150, "", smallConfig);
 
         this.input.keyboard.on('keydown', event => {
 
             console.log(event);
             this.playerProgress++;
-            this.playerText.setText("I am cool \n I am funny \n I can talk to them".substring(0, this.playerProgress));
+            this.playerText.setText("I am cool. \nI am funny! \nI can talk to them!".substring(0, this.playerProgress));
+
+            if (this.playerProgress == 45){
+                this.mirrorSuccess.play();
+                this.successBackground.setAlpha(1);
+                this.successMessage.setAlpha(1);
+                this.nextArrow.setAlpha(1);
+            }
 
         });
 

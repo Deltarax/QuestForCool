@@ -36,7 +36,7 @@ let smallConfig = {
     fontSize: '30px',
     // backgroundColor: '#FFFFFF',
     color: '#000000',
-    align: 'right',
+    align: 'left',
     padding: {
     top: 5,
     bottom: 5,
