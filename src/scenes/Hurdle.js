@@ -7,20 +7,22 @@ class Hurdle extends Phaser.Scene {
     //adding sprites
     this.hurdleBG = this.add.tileSprite(0, 0, 960, 540, 'hurdleBG').setOrigin(0, 0);
     this.hurdleSprite = this.physics.add.sprite(225, 370, 'hurdleRun').setOrigin(0, 0);
+    this.hurdleJump = this.physics.add.sprite(225, 370, 'hurdleJump').setOrigin(0, 0).setAlpha(0);
 
     this.hurdleGroup = this.add.group({
       runChildUpdate: true
     });
     this.hurdle = this.physics.add.sprite(850, 460, 'hurdle').setOrigin(0, 0).setVelocityX(-300);
-    //for (let i = 1; i < 10; i++) {
-      //let hurdle = this.physics.add.sprite(850, 460, 'hurdle').setOrigin(0, 0).setVelocityX(-300);;
-      //this.hurdleGroup.add(hurdle);
-    //};
     
-    //hurdle sprite physics
+    // hurdle sprite physics
     this.hurdleSprite.setCollideWorldBounds(true);
     this.hurdleSprite.setGravityY(650);
     this.hurdleSprite.body.setSize(80, 170, 20, 10);
+
+    // hurdle jump physics
+    this.hurdleJump.setCollideWorldBounds(true);
+    this.hurdleJump.setGravityY(650);
+    this.hurdleJump.body.setSize(80, 170, 25, 10);
 
     //hurdle physics
     this.hurdle.body.setSize(82, 80, 10, 0);
@@ -61,22 +63,29 @@ class Hurdle extends Phaser.Scene {
     this.hurdleBG.tilePositionX -= 3;
     if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
       if (this.hurdleSprite.y == 370) {
+        this.hurdleJump.setVelocityY(-400);
         this.hurdleSprite.setVelocityY(-400);
-        // this.hurdleSprite.setTexture();
+        this.hurdleSprite.setAlpha(0);
+        this.hurdleJump.setAlpha(1);
         this.jumpSFX.play();
+        this.clock = this.time.delayedCall(1200, () => {
+          this.hurdleSprite.setAlpha(1);
+          this.hurdleJump.setAlpha(0);
+        });
       }
-      //this.hurdleScore += 1;
-      //this.scoreText.setText('Leaps: ' + this.hurdleScore);
     }
 
-    //destroy hurdles
+    //resets hurdles after success
     if (this.hurdle.x == -75){
-      this.hurdle.destroy();
+      this.hurdle.x = 1000;
+      this.hurdleScore ++;
+      this.scoreText.setText('Leaps: ' + this.hurdleScore);
     }
   }
 
+  //resets hurdles after failure
   hurdleCollision() {
-    this.hurdle.destroy();
+    this.hurdle.x = 1000;
     this.hurdleHit.play();
   } 
 }
