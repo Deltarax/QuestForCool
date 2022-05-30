@@ -24,11 +24,22 @@ class Mirror extends Phaser.Scene {
         this.nextArrow.setInteractive({
             useHandCursor: true,
         });
+        this.restart = this.add.sprite(900, 30, 'restart').setAlpha(1).setScale(.5);
+        this.restart.setInteractive({
+            useHandCursor: true,
+        });
         // click on a Game Object
         this.input.on('gameobjectdown', (pointer, gameObject, event) => {
-            this.BGM.stop();
-            cutsceneState = 'maze';
-            this.scene.start('cutScene');
+            if (gameObject == this.nextArrow){
+                this.BGM.stop();
+                cutsceneState = 'maze';
+                this.scene.start('cutScene');
+            }
+            
+            if (gameObject == this.restart){
+            cutsceneState = 'start';
+            this.scene.start('menuScene');
+            }
         });
 
         // SFX
