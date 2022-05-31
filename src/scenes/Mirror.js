@@ -7,15 +7,15 @@ class Mirror extends Phaser.Scene {
         console.log("we in mirror modes");
 
         // adds Main charecter sprites
-        this.mirrorOpen = this.add.sprite(0, 0, 'mirrorOpen').setAlpha(1).setOrigin(0, 0);
-        this.mirrorClosed = this.add.sprite(0, 0, 'mirrorClosed').setAlpha(0).setOrigin(0, 0);
+        this.mirrorOpen = this.add.sprite(0, 0, 'mirrorOpen').setAlpha(0).setOrigin(0, 0);
+        this.mirrorClosed = this.add.sprite(0, 0, 'mirrorClosed').setAlpha(1).setOrigin(0, 0);
 
         //flags for simple sprite animation
         this.mouthTicks = 0;
         this.mouthOpen = true;
 
         // text configuration
-        this.add.text(100, 50, "Use the keyboard to type some encouragement to yourself!", smallConfig);
+        this.add.text(100, 25, "Use the keyboard to type some encouragement to yourself!", smallConfig);
         // this.add.text(100, 100, "Capitalization and spaces are important!", smallConfig);
 
 
@@ -54,13 +54,25 @@ class Mirror extends Phaser.Scene {
 
         this.playerProgress = 0;
 
-        this.playerText = this.add.text(450, 150, "", smallConfig);
+        this.playerText = this.add.text(650, 100, "", smallConfig);
 
         this.input.keyboard.on('keydown', event => {
 
             console.log(event);
             this.playerProgress++;
             this.playerText.setText("I am cool. \nI am funny! \nI can talk to them!".substring(0, this.playerProgress));
+
+            if (this.mouthOpen){
+                this.mirrorOpen.setAlpha(1);
+                this.mirrorClosed.setAlpha(0);
+                this.mouthOpen = false;
+                this.mouthTicks = 0;
+            } else {
+                this.mirrorClosed.setAlpha(1);
+                this.mirrorOpen.setAlpha(0);
+                this.mouthOpen = true;
+                this.mouthTicks = 0;
+            }
 
             if (this.playerProgress == 45){
                 this.mirrorSuccess.play();
@@ -115,20 +127,20 @@ class Mirror extends Phaser.Scene {
     update() {
 
         // Simple animation for the mouth
-        this.mouthTicks++;
-        if (this.mouthTicks >= 50){
-            if (this.mouthOpen){
-                this.mirrorOpen.setAlpha(0);
-                this.mirrorClosed.setAlpha(1);
-                this.mouthOpen = false;
-                this.mouthTicks = 0;
-            } else {
-                this.mirrorClosed.setAlpha(0);
-                this.mirrorOpen.setAlpha(1);
-                this.mouthOpen = true;
-                this.mouthTicks = 0;
-            }
-        }
+        // this.mouthTicks++;
+        // if (this.mouthTicks >= 50){
+        //     if (this.mouthOpen){
+        //         this.mirrorOpen.setAlpha(0);
+        //         this.mirrorClosed.setAlpha(1);
+        //         this.mouthOpen = false;
+        //         this.mouthTicks = 0;
+        //     } else {
+        //         this.mirrorClosed.setAlpha(0);
+        //         this.mirrorOpen.setAlpha(1);
+        //         this.mouthOpen = true;
+        //         this.mouthTicks = 0;
+        //     }
+        // }
         
     }
 
