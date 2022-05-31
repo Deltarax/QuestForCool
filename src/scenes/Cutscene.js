@@ -10,6 +10,7 @@ class Cutscene extends Phaser.Scene {
         this.speechFlag = false;
         this.teardropFlag = false;
         this.finishedFlag = false;
+        this.enlargeFlag = false;
 
         // End cutscene special flags
         this.surpriseFlag = false;
@@ -142,6 +143,9 @@ class Cutscene extends Phaser.Scene {
                 this.mainGuy.x++; 
                 this.mainGuy.x++;    // move the mc to the right more
             } else if (this.mainGuy.y < 350){
+                if(!this.enlargeFlag){
+                    this.mcEnlarger();
+                }
                 this.mainGuy.setDepth(1);
                 this.mainGuy.y++;
                 this.mainGuy.y++;    // move the mc down to the cool kids
@@ -158,6 +162,19 @@ class Cutscene extends Phaser.Scene {
             // allow player to press space to begin!
             this.nextArrow.setAlpha(1);
         }
+    }
+
+    mcEnlarger() {
+        console.log("called");
+        this.enlargeFlag = true;
+        this.tweens.add({
+
+            targets: this.mainGuy,
+            scale: 0.35,
+            duration: 1000,
+            delay: 100,
+    
+          });
     }
 
 }
