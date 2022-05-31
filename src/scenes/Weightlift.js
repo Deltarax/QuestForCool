@@ -39,6 +39,7 @@ class Weightlift extends Phaser.Scene {
             }
             
             if (gameObject == this.restart){
+            this.BGM.stop();
             cutsceneState = 'start';
             this.scene.start('menuScene');
             }
@@ -70,7 +71,7 @@ class Weightlift extends Phaser.Scene {
         this.BGM.play();
 
         // Add Success message
-        this.successBackground = this.add.rectangle(450, 275, 1200, 300, '0xFFFFFF').setAlpha(0);
+        this.successBackground = this.add.rectangle(450, 275, 1200, 300, '0xD4D4D4').setAlpha(0);
         this.successMessage = this.add.text(game.config.width/2, game.config.height/2, 'Success!', successConfig).setOrigin(0.5,0.5).setAlpha(0);
 
         this.tweens.add({

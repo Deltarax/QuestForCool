@@ -19,8 +19,8 @@ let config = {
 }
 
 let textConfig = {
-    fontFamily: 'Roboto',
-    fontSize: '85px',
+    fontFamily: 'Amatic-Bold',
+    fontSize: '100px',
     // backgroundColor: '#FFFFFF',
     color: '#000000',
     align: 'right',
@@ -32,8 +32,8 @@ let textConfig = {
 }
 
 let smallConfig = {
-    fontFamily: 'Roboto',
-    fontSize: '30px',
+    fontFamily: 'AmaticSC-Regular',
+    fontSize: '50px',
     // backgroundColor: '#FFFFFF',
     color: '#000000',
     align: 'left',
@@ -45,8 +45,8 @@ let smallConfig = {
 }
 
 let mediumConfig = {
-    fontFamily: 'Roboto',
-    fontSize: '40px',
+    fontFamily: 'AmaticSC-Regular',
+    fontSize: '75px',
     // backgroundColor: '#FFFFFF',
     color: '#000000',
     align: 'right',
@@ -58,9 +58,9 @@ let mediumConfig = {
 }
 
 let successConfig = {
-    fontFamily: 'Roboto',
+    fontFamily: 'Amatic-Bold',
     fontSize: '240px',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#D4D4D4',
     color: '#00BB00',
     align: 'right',
     padding: {

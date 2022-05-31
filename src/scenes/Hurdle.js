@@ -39,7 +39,7 @@ class Hurdle extends Phaser.Scene {
     this.scoreText = this.add.text(0, 0, 'Leaps: ' + this.hurdleScore, smallConfig);
 
     //next scene arrow
-    this.nextArrow = this.add.sprite(50, 500, 'arrow').setAlpha(1).setScale(2);
+    this.nextArrow = this.add.sprite(50, 500, 'arrow').setAlpha(0).setScale(2);
     this.nextArrow.setInteractive({
         useHandCursor: true,
     });
@@ -62,10 +62,15 @@ class Hurdle extends Phaser.Scene {
         }
       
         if (gameObject == this.restart){
+        this.BGM.stop();
         cutsceneState = 'start';
         this.scene.start('menuScene');
         }
     });
+
+    // success message
+    this.successBackground = this.add.rectangle(450, 275, 1200, 300, '0xD4D4D4').setAlpha(0);
+    this.successMessage = this.add.text(game.config.width/2, game.config.height/2, 'Success!', successConfig).setOrigin(0.5,0.5).setAlpha(0);
 
     // SFX
     this.jumpSFX = this.sound.add('jumpSFX', {volume: 0.5});
@@ -81,7 +86,7 @@ class Hurdle extends Phaser.Scene {
 
     this.physics.world.overlap(this.hurdleSprite, this.hurdle, this.hurdleCollision, null, this);
 
-    this.hurdleBG.tilePositionX += 3;
+    this.hurdleBG.tilePositionX += 4;
     if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
       if (this.hurdleSprite.y == 370) {
         this.hurdleJump.setVelocityY(-400);
@@ -102,11 +107,18 @@ class Hurdle extends Phaser.Scene {
       this.hurdleScore ++;
       this.scoreText.setText('Leaps: ' + this.hurdleScore);
     }
+
+    if (this.hurdleScore == 5) {
+      this.nextArrow.setAlpha(1);
+      this.successBackground.setAlpha(1);
+      this.successMessage.setAlpha(1);
+      this.scoreText.setText('Nice Job!');
+    }
   }
 
   //resets hurdles after failure
   hurdleCollision() {
     this.hurdle.x = 1000;
     this.hurdleHit.play();
-  } 
+  };
 }
