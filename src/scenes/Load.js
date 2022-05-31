@@ -27,7 +27,7 @@ class Load extends Phaser.Scene {
         this.load.image('teardrop', './assets/sweat.png');
         this.load.image('surprise', './assets/surprise.png');
 
-        this.load.image('corn', './assets/tempCorn.png'); //temp
+        this.load.image('corn', './assets/cornTexture.png'); //temp
         this.load.image('mazeHead', './assets/mazeMC.png');
         this.load.image('CK1', './assets/mazeCK1.png');
         this.load.image('CK2', './assets/mazeCK2.png');
