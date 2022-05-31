@@ -16,8 +16,8 @@ class Load extends Phaser.Scene {
         this.load.image('weightliftUp', './assets/weightliftUp.png');
         this.load.image('weightliftBG', './assets/weightliftBG.png')
 
-        this.load.image('mirrorOpen', './assets/tempMirrorTalk.png'); //temp
-        this.load.image('mirrorClosed', './assets/tempMirrorTalk2.png'); //temp
+        this.load.image('mirrorOpen', './assets/mirrorOpen.png');
+        this.load.image('mirrorClosed', './assets/mirrorClosed.png');
         
         this.load.image('weightSpeechBubble', './assets/tempWeightSpeech.png'); //temp
         this.load.image('mirrorSpeechBubble', './assets/tempMirrorSpeech.png'); //temp
@@ -29,6 +29,9 @@ class Load extends Phaser.Scene {
 
         this.load.image('corn', './assets/tempCorn.png'); //temp
         this.load.image('mazeHead', './assets/mazeMC.png');
+        this.load.image('CK1', './assets/mazeCK1.png');
+        this.load.image('CK2', './assets/mazeCK2.png');
+        this.load.image('CK3', './assets/mazeCK3.png')
 
         this.load.image('hurdle', './assets/tempHurdle.png'); //temp
         this.load.image('hurdleRun', './assets/hurdleRun.png');

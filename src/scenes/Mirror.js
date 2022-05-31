@@ -6,6 +6,10 @@ class Mirror extends Phaser.Scene {
     create() {
         console.log("we in mirror modes");
 
+        // adds Main charecter sprites
+        this.mirrorOpen = this.add.sprite(0, 0, 'mirrorOpen').setAlpha(1).setOrigin(0, 0);
+        this.mirrorClosed = this.add.sprite(0, 0, 'mirrorClosed').setAlpha(0).setOrigin(0, 0);
+
         //flags for simple sprite animation
         this.mouthTicks = 0;
         this.mouthOpen = true;
@@ -13,10 +17,6 @@ class Mirror extends Phaser.Scene {
         // text configuration
         this.add.text(100, 50, "Use the keyboard to type some encouragement to yourself!", smallConfig);
         // this.add.text(100, 100, "Capitalization and spaces are important!", smallConfig);
-
-        // adds Main charecter sprites
-        this.mirrorOpen = this.add.sprite(300, 300, 'mirrorOpen').setAlpha(1);
-        this.mirrorClosed = this.add.sprite(300, 300, 'mirrorClosed').setAlpha(0);
 
 
         // Create the green arrow, link it to next scene, and hide it before it's needed.
