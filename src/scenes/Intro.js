@@ -12,7 +12,7 @@ class Intro extends Phaser.Scene {
       // added keycode
       keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-      this.bg = this.add.sprite(0,0, 'cutsceneBG').setOrigin(0, 0);
+      this.bg = this.add.sprite(0,0, 'textBG').setOrigin(0, 0);
 
       let texts = [
         this.add.text(game.config.width/2, game.config.height/2 - 150, "Hank has always been alone.", mediumConfig).setOrigin(0.5,0.5),

@@ -9,7 +9,7 @@ class Credit extends Phaser.Scene {
       // camera fade in
       this.cameras.main.fadeIn(500, 255, 255, 255);
 
-      this.bg = this.add.sprite(0,0, 'cutsceneBG').setOrigin(0, 0);
+      this.bg = this.add.sprite(0,0, 'textBG').setOrigin(0, 0);
 
       
 

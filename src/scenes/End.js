@@ -12,7 +12,7 @@ class End extends Phaser.Scene {
       // added keycode
       keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-      this.bg = this.add.sprite(0,0, 'cutsceneBG').setOrigin(0, 0);
+      this.bg = this.add.sprite(0,0, 'textBG').setOrigin(0, 0);
 
       
       let texts = [
