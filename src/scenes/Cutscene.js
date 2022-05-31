@@ -38,12 +38,12 @@ class Cutscene extends Phaser.Scene {
             this.speechBubble = this.add.sprite(850, 160, 'mirrorSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
         } else if (cutsceneState == 'maze'){
             this.speechBubble = this.add.sprite(850, 160, 'mazeSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
-            this.speechBubble = this.add.sprite(800, 200, 'mazeSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
+            this.speechBubble = this.add.sprite(850, 160, 'mazeSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
         } else if (cutsceneState == 'hurdle'){
-            this.speechBubble = this.add.sprite(800, 200, 'hurdleSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
+            this.speechBubble = this.add.sprite(850, 140, 'hurdleSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
         } else if (cutsceneState == 'end'){
             this.speechBubble = this.add.sprite(850, 160, 'endSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
-            this.surprise = this.add.sprite(280, 50, 'surprise').setOrigin(0.5,0.5).setAlpha(0);
+            this.surprise = this.add.sprite(250, 50, 'surprise').setOrigin(0.5,0.5).setAlpha(0);
         }
         
         // Create the green arrow, link it to next scene, and hide it before it's needed.

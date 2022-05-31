@@ -19,13 +19,13 @@ class Load extends Phaser.Scene {
         this.load.image('mirrorOpen', './assets/mirrorOpen.png');
         this.load.image('mirrorClosed', './assets/mirrorClosed.png');
         
-        this.load.image('weightSpeechBubble', './assets/tempWeightSpeech.png'); //temp
-        this.load.image('mirrorSpeechBubble', './assets/tempMirrorSpeech.png'); //temp
-        this.load.image('mazeSpeechBubble', './assets/tempMazeSpeech.png'); //temp
-        this.load.image('hurdleSpeechBubble', './assets/tempHurdleSpeech.png'); //temp
-        this.load.image('endSpeechBubble', './assets/tempEndSpeech.png'); //temp
-        this.load.image('teardrop', './assets/tempTeardrop.png'); //temp
-        this.load.image('surprise', './assets/tempSurprise.png'); //temp
+        this.load.image('weightSpeechBubble', './assets/weightSpeech.png');
+        this.load.image('mirrorSpeechBubble', './assets/mirrorSpeech.png');
+        this.load.image('mazeSpeechBubble', './assets/mazeSpeech.png');
+        this.load.image('hurdleSpeechBubble', './assets/hurdleSpeech.png');
+        this.load.image('endSpeechBubble', './assets/endSpeech.png');
+        this.load.image('teardrop', './assets/sweat.png');
+        this.load.image('surprise', './assets/surprise.png');
 
         this.load.image('corn', './assets/tempCorn.png'); //temp
         this.load.image('mazeHead', './assets/mazeMC.png');
@@ -52,7 +52,7 @@ class Load extends Phaser.Scene {
     update(){
         console.log('loading');
 
-        this.scene.start('mazeScene');
+        this.scene.start('menuScene');
         cutsceneState = 'start';
     }
 }
