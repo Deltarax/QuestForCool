@@ -6,6 +6,9 @@ class Intro extends Phaser.Scene {
     create() {
       console.log('Inside intro');
 
+      // camera fade in
+      this.cameras.main.fadeIn(500, 255, 255, 255);
+
       // added keycode
       keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
@@ -43,7 +46,11 @@ class Intro extends Phaser.Scene {
       // click on a Game Object
       this.input.on('gameobjectdown', (pointer, gameObject, event) => {
           if (gameObject == this.nextArrow){
-            this.scene.start('cutScene');
+            // camera fade out
+            this.cameras.main.fadeOut(500, 255, 255, 255);
+            this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+              this.scene.start('cutScene');
+            })
           }
           if (gameObject == this.restart){
             cutsceneState = 'start';

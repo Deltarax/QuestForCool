@@ -6,6 +6,9 @@ class End extends Phaser.Scene {
     create() {
       console.log('Inside end');
 
+      // camera fade in
+      this.cameras.main.fadeIn(500, 255, 255, 255);
+
       // added keycode
       keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
@@ -39,7 +42,11 @@ class End extends Phaser.Scene {
       });
       // click on a Game Object
       this.input.on('gameobjectdown', (pointer, gameObject, event) => {
+        // camera fade out
+        this.cameras.main.fadeOut(500, 255, 255, 255);
+        this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
           this.scene.start('creditScene');
+        })
       });
 
       this.tweens.add({

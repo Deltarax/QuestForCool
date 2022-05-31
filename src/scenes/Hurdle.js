@@ -4,6 +4,10 @@ class Hurdle extends Phaser.Scene {
   }
 
   create() {
+
+    // camera fade in
+    this.cameras.main.fadeIn(500, 255, 255, 255);
+
     //adding sprites
     this.hurdleBG = this.add.tileSprite(0, 0, 960, 540, 'hurdleBG').setOrigin(0, 0);
     this.hurdleSprite = this.physics.add.sprite(225, 370, 'hurdleRun').setOrigin(0, 0);
@@ -48,9 +52,13 @@ class Hurdle extends Phaser.Scene {
     // click on a Game Object
     this.input.on('gameobjectdown', (pointer, gameObject, event) => {
         if (gameObject == this.nextArrow){
-          this.BGM.stop();
-          cutsceneState = 'end';
-          this.scene.start('cutScene');
+          // camera fade out
+          this.cameras.main.fadeOut(500, 255, 255, 255);
+          this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+            this.BGM.stop();
+            cutsceneState = 'end';
+            this.scene.start('cutScene');
+          })
         }
       
         if (gameObject == this.restart){

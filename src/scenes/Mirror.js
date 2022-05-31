@@ -6,6 +6,9 @@ class Mirror extends Phaser.Scene {
     create() {
         console.log("we in mirror modes");
 
+        // camera fade in
+        this.cameras.main.fadeIn(500, 255, 255, 255);
+
         // adds Main charecter sprites
         this.mirrorOpen = this.add.sprite(0, 0, 'mirrorOpen').setAlpha(0).setOrigin(0, 0);
         this.mirrorClosed = this.add.sprite(0, 0, 'mirrorClosed').setAlpha(1).setOrigin(0, 0);
@@ -31,9 +34,13 @@ class Mirror extends Phaser.Scene {
         // click on a Game Object
         this.input.on('gameobjectdown', (pointer, gameObject, event) => {
             if (gameObject == this.nextArrow){
-                this.BGM.stop();
-                cutsceneState = 'maze';
-                this.scene.start('cutScene');
+                // camera fade out
+                this.cameras.main.fadeOut(500, 255, 255, 255);
+                this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+                    this.BGM.stop();
+                    cutsceneState = 'maze';
+                    this.scene.start('cutScene');
+                })
             }
             
             if (gameObject == this.restart){

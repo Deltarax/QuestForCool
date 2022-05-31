@@ -5,6 +5,9 @@ class Cutscene extends Phaser.Scene {
 
     create() {
 
+        // camera fade in
+        this.cameras.main.fadeIn(500, 255, 255, 255);
+
         // Event Flags
         this.movingFlag = true;
         this.speechFlag = false;
@@ -55,18 +58,22 @@ class Cutscene extends Phaser.Scene {
         // click on a Game Object
         this.input.on('gameobjectdown', (pointer, gameObject, event) => {
             if (gameObject == this.nextArrow){
-                // depending on what cutscene, start the correct game
-                if (cutsceneState == 'start'){
-                    this.scene.start("weightliftScene");
-                } else if (cutsceneState == 'mirror'){
-                    this.scene.start("mirrorScene");
-                } else if (cutsceneState == 'maze'){
-                    this.scene.start("mazeScene");
-                } else if (cutsceneState == 'hurdle'){
-                    this.scene.start("hurdleScene");
-                } else if (cutsceneState == 'end'){
-                    this.scene.start("endScene");
-                }
+                // camera fade out
+                this.cameras.main.fadeOut(500, 255, 255, 255);
+                this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+                    // depending on what cutscene, start the correct game
+                    if (cutsceneState == 'start'){
+                        this.scene.start("weightliftScene");
+                    } else if (cutsceneState == 'mirror'){
+                        this.scene.start("mirrorScene");
+                    } else if (cutsceneState == 'maze'){
+                        this.scene.start("mazeScene");
+                    } else if (cutsceneState == 'hurdle'){
+                        this.scene.start("hurdleScene");
+                    } else if (cutsceneState == 'end'){
+                        this.scene.start("endScene");
+                    }
+                })
             }
             
             if (gameObject == this.restart){

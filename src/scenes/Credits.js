@@ -6,6 +6,9 @@ class Credit extends Phaser.Scene {
     create() {
       console.log('Inside credit');
 
+      // camera fade in
+      this.cameras.main.fadeIn(500, 255, 255, 255);
+
       this.bg = this.add.sprite(0,0, 'cutsceneBG').setOrigin(0, 0);
 
       
@@ -24,7 +27,11 @@ class Credit extends Phaser.Scene {
       });
       // click on a Game Object
       this.input.on('gameobjectdown', (pointer, gameObject, event) => {
-          this.scene.start('menuScene');
+          // camera fade out
+          this.cameras.main.fadeOut(500, 255, 255, 255);
+          this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
+            this.scene.start('menuScene');
+          })
       });
 
       this.tweens.add({
