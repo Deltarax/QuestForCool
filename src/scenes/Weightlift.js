@@ -74,6 +74,8 @@ class Weightlift extends Phaser.Scene {
         // Add Success message
         this.successBackground = this.add.rectangle(450, 275, 1200, 300, '0xD4D4D4').setAlpha(0);
         this.successMessage = this.add.text(game.config.width/2, game.config.height/2, 'Success!', successConfig).setOrigin(0.5,0.5).setAlpha(0);
+        this.altMessage = this.add.text(game.config.width/2, game.config.height/2 + 125, '(You still need to talk to them though.)', smallConfig).setOrigin(0.5,0.5).setAlpha(0);
+
 
         this.tweens.add({
 
@@ -138,6 +140,7 @@ class Weightlift extends Phaser.Scene {
             this.gameOver = true;
             this.successBackground.setAlpha(1);
             this.successMessage.setAlpha(1);
+            this.altMessage.setAlpha(1);
             this.nextArrow.setAlpha(1);
             this.scoreText.setText('Nice Job!');
         }

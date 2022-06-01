@@ -82,6 +82,7 @@ class Cutscene extends Phaser.Scene {
                 })
             }
             
+            // restart button functionality
             if (gameObject == this.restart){
                 this.BGM.stop();
                 cutsceneState = 'start';
@@ -157,7 +158,7 @@ class Cutscene extends Phaser.Scene {
                 this.mainGuy.x++; 
                 this.mainGuy.x++;    // move the mc to the right more
             } else if (this.mainGuy.y < 350){
-                if(!this.enlargeFlag){
+                if(!this.enlargeFlag){  // Make the mc bigger for perspective
                     this.mcEnlarger();
                 }
                 this.mainGuy.setDepth(1);
@@ -178,6 +179,7 @@ class Cutscene extends Phaser.Scene {
         }
     }
 
+    // function to make the mc a bit bigger, letting us create perspective tricks
     mcEnlarger() {
         console.log("called");
         this.enlargeFlag = true;

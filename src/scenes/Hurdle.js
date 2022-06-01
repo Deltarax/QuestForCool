@@ -72,6 +72,8 @@ class Hurdle extends Phaser.Scene {
     // success message
     this.successBackground = this.add.rectangle(450, 275, 1200, 300, '0xD4D4D4').setAlpha(0);
     this.successMessage = this.add.text(game.config.width/2, game.config.height/2, 'Success!', successConfig).setOrigin(0.5,0.5).setAlpha(0);
+    this.altMessage = this.add.text(game.config.width/2, game.config.height/2 + 125, '(Just approach them already!)', smallConfig).setOrigin(0.5,0.5).setAlpha(0);
+
 
     // SFX
     this.jumpSFX = this.sound.add('jumpSFX', {volume: 0.5});

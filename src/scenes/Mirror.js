@@ -58,18 +58,19 @@ class Mirror extends Phaser.Scene {
         this.BGM.setLoop(true);
         this.BGM.play();
 
-        // Taken from Nathan's lowKey
-
+        // Tracks how much the player hit their keyboard
         this.playerProgress = 0;
 
         this.playerText = this.add.text(650, 100, "", smallConfig);
 
         this.input.keyboard.on('keydown', event => {
 
+            // every time the player hits a key, reveal a letter from the final message
             console.log(event);
             this.playerProgress++;
             this.playerText.setText("I am cool. \nI am funny! \nI can talk to them!".substring(0, this.playerProgress));
 
+            // Open or close mouth depending on keyboard use
             if (this.mouthOpen){
                 this.mirrorOpen.setAlpha(1);
                 this.mirrorClosed.setAlpha(0);
@@ -82,44 +83,23 @@ class Mirror extends Phaser.Scene {
                 this.mouthTicks = 0;
             }
 
+            // End scene once full message is played.
             if (this.playerProgress == 45){
                 this.mirrorSuccess.play();
                 this.successBackground.setAlpha(1);
                 this.successMessage.setAlpha(1);
+                this.altMessage.setAlpha(1);
                 this.nextArrow.setAlpha(1);
             }
 
         });
 
-
-        // this.textBox = this.add.dom(450, 400).createFromCache('nameform');
-
-
-
-        // watch for keycombomatches
-        this.input.keyboard.on('keycombomatch', (combo, event) => {
-            if (combo === firstCombo) { 
-                this.firstPhrase.setAlpha(0);
-                this.mirrorSuccess.play();
-                this.secondPhrase.setAlpha(1);
-            }
-            if (combo === secondCombo) {
-                this.secondPhrase.setAlpha(0);
-                this.mirrorSuccess.play();
-                this.thirdPhrase.setAlpha(1);
-            }   
-            if (combo === thirdCombo) {
-                this.thirdPhrase.setAlpha(0);
-                this.mirrorSuccess.play();
-                this.successBackground.setAlpha(1);
-                this.successMessage.setAlpha(1);
-                this.nextArrow.setAlpha(1);
-            }   
-        });
 
         // Add Success message
         this.successBackground = this.add.rectangle(450, 275, 1200, 300, '0xD4D4D4').setAlpha(0);
         this.successMessage = this.add.text(game.config.width/2, game.config.height/2, 'Success!', successConfig).setOrigin(0.5,0.5).setAlpha(0);
+        this.altMessage = this.add.text(game.config.width/2, game.config.height/2 + 125, '(Hey, you\'re feeling a bit more confident!)', smallConfig).setOrigin(0.5,0.5).setAlpha(0);
+
 
         this.tweens.add({
 
@@ -130,26 +110,6 @@ class Mirror extends Phaser.Scene {
             repeat: -1
     
           });
-    }
-
-    update() {
-
-        // Simple animation for the mouth
-        // this.mouthTicks++;
-        // if (this.mouthTicks >= 50){
-        //     if (this.mouthOpen){
-        //         this.mirrorOpen.setAlpha(0);
-        //         this.mirrorClosed.setAlpha(1);
-        //         this.mouthOpen = false;
-        //         this.mouthTicks = 0;
-        //     } else {
-        //         this.mirrorClosed.setAlpha(0);
-        //         this.mirrorOpen.setAlpha(1);
-        //         this.mouthOpen = true;
-        //         this.mouthTicks = 0;
-        //     }
-        // }
-        
     }
 
 }
