@@ -40,6 +40,7 @@ class End extends Phaser.Scene {
       });
       // click on a Game Object
       this.input.on('gameobjectdown', (pointer, gameObject, event) => {
+        this.nextArrow.destroy();
         // camera fade out
         this.cameras.main.fadeOut(500, 255, 255, 255);
         this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {

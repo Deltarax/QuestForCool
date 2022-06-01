@@ -75,6 +75,7 @@ class Maze extends Phaser.Scene {
         // click on a Game Object
         this.input.on('gameobjectdown', (pointer, gameObject, event) => {
             if (gameObject == this.nextArrow){
+                this.nextArrow.destroy();
                 // camera fade out
                 this.cameras.main.fadeOut(500, 255, 255, 255);
                 this.BGM.stop();

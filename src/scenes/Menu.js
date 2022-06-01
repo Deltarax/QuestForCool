@@ -27,6 +27,7 @@ class Menu extends Phaser.Scene {
       // click on a Game Object
       this.input.on('gameobjectdown', (pointer, gameObject, event) => {
           if (gameObject == this.nextArrow){
+            this.nextArrow.destroy();
             this.cameras.main.fadeOut(500, 255, 255, 255);
             this.BGM.stop();
             this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {

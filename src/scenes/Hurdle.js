@@ -35,7 +35,6 @@ class Hurdle extends Phaser.Scene {
     this.hurdleScore = 0;
     this.scoreText = this.add.text(100, 425, 'Leaps: ' + this.hurdleScore, smallConfig);
     this.add.text(350, 85, "Press SPACE to jump!", smallConfig);
-    this.add.text(320, 140, "(If you run out of track, press R to retry.)", smallestConfig);
 
     //next scene arrow
     this.nextArrow = this.add.sprite(50, 500, 'arrow').setAlpha(0).setScale(2);
@@ -51,6 +50,7 @@ class Hurdle extends Phaser.Scene {
     // click on a Game Object
     this.input.on('gameobjectdown', (pointer, gameObject, event) => {
         if (gameObject == this.nextArrow){
+          this.nextArrow.destroy();
           // camera fade out
           this.cameras.main.fadeOut(500, 255, 255, 255);
           this.BGM.stop();
@@ -144,13 +144,6 @@ class Hurdle extends Phaser.Scene {
       this.successMessage.setAlpha(1);
       this.scoreText.setText('Nice Job!');
     }
-
-    // Restarts game if stuck
-    if (Phaser.Input.Keyboard.JustDown(keyR)) {
-      this.BGM.stop();
-      this.scene.start('hurdleScene');
-    }
-
   }
 
   //resets hurdles after failure

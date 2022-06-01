@@ -74,19 +74,6 @@ let successConfig = {
     fixedWidth: 0
 }
 
-let smallestConfig = {
-    fontFamily: 'AmaticSC-Regular',
-    fontSize: '30px',
-    // backgroundColor: '#FFFFFF',
-    color: '#000000',
-    align: 'left',
-    padding: {
-    top: 15,
-    bottom: 15,
-    },
-    fixedWidth: 0
-}
-
 let weightConfig = {
     fontFamily: 'Amatic-Bold',
     fontSize: '100px',
