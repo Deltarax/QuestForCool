@@ -51,7 +51,10 @@ class Mirror extends Phaser.Scene {
         });
 
         // SFX
-        this.mirrorSuccess = this.sound.add('mirrorSuccess', {volume: 0.3});
+        this.success = this.sound.add('mgSuccess', {volume: 0.3});
+
+        //check for success sfx
+        this.successCheck = false;
 
         // BGM
         this.BGM = this.sound.add('minigameBGM', {volume: 0.1});
@@ -85,7 +88,10 @@ class Mirror extends Phaser.Scene {
 
             // End scene once full message is played.
             if (this.playerProgress == 45){
-                this.mirrorSuccess.play();
+                if (this.successCheck == false){
+                    this.success.play();
+                    this.successCheck = true;
+                };
                 this.successBackground.setAlpha(1);
                 this.successMessage.setAlpha(1);
                 this.altMessage.setAlpha(1);

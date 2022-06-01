@@ -64,6 +64,7 @@ class Weightlift extends Phaser.Scene {
         
         // sfx
         this.weightSFX = this.sound.add('weights', {volume: 0.2});
+        this.success = this.sound.add('mgSuccess', {volume: 0.3});
 
         // bgm
         this.BGM = this.sound.add('minigameBGM', {volume: 0.1});
@@ -84,7 +85,10 @@ class Weightlift extends Phaser.Scene {
             yoyo: true,
             repeat: -1
     
-          });
+        });
+
+        //check for success sfx
+        this.successCheck = false;
     }
 
     update() {
@@ -136,6 +140,10 @@ class Weightlift extends Phaser.Scene {
         }
         // When sufficiently strong end game
         if (this.weightScore >= 50){
+            if (this.successCheck == false){
+                this.success.play();
+                this.successCheck = true;
+            };
             this.gameOver = true;
             this.successBackground.setAlpha(1);
             this.successMessage.setAlpha(1);

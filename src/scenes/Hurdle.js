@@ -31,10 +31,9 @@ class Hurdle extends Phaser.Scene {
     keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
     keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
 
-
     // score & text
     this.hurdleScore = 0;
-    this.scoreText = this.add.text(100, 375, 'Leaps: ' + this.hurdleScore, smallConfig);
+    this.scoreText = this.add.text(100, 425, 'Leaps: ' + this.hurdleScore, smallConfig);
     this.add.text(350, 85, "Press SPACE to jump!", smallConfig);
     this.add.text(320, 140, "(If you run out of track, press R to retry.)", smallestConfig);
 
@@ -78,6 +77,7 @@ class Hurdle extends Phaser.Scene {
     // SFX
     this.jumpSFX = this.sound.add('jumpSFX', {volume: 0.5});
     this.hurdleHit = this.sound.add('hurdleHit', {volume: 0.3});
+    this.success = this.sound.add('mgSuccess', {volume: 0.3});
 
     // BGM
     this.BGM = this.sound.add('minigameBGM', {volume: 0.1});
@@ -94,14 +94,21 @@ class Hurdle extends Phaser.Scene {
       loop: -1
  
     });
+
+    //check for success sfx
+    this.successCheck = false;
   }
 
   update() {
-
+    
+    // Collision Detection
     this.physics.world.overlap(this.hurdleSprite, this.hurdle, this.hurdleCollision, null, this);
     this.physics.world.overlap(this.hurdleJump, this.hurdle, this.hurdleCollision, null, this);
 
+    // Background scrolling
     this.hurdleBG.tilePositionX += 4;
+
+    // Jump input
     if (Phaser.Input.Keyboard.JustDown(keySPACE)) {
       if (this.hurdleSprite.y == 370) {
         this.hurdleJump.setVelocityY(-400);
@@ -123,12 +130,22 @@ class Hurdle extends Phaser.Scene {
       this.scoreText.setText('Leaps: ' + this.hurdleScore);
     }
 
+    // End state
     if (this.hurdleScore == 5) {
+      if (this.successCheck == false){
+        this.success.play();
+        this.successCheck = true;
+      };
+      this.hurdle.setAlpha(0);
+      this.hurdleJump.setAlpha(0);
+      this.hurdleHit.setMute(true);
       this.nextArrow.setAlpha(1);
       this.successBackground.setAlpha(1);
       this.successMessage.setAlpha(1);
       this.scoreText.setText('Nice Job!');
     }
+
+    // Restarts game if stuck
     if (Phaser.Input.Keyboard.JustDown(keyR)) {
       this.BGM.stop();
       this.scene.start('hurdleScene');

@@ -103,6 +103,12 @@ class Maze extends Phaser.Scene {
         this.BGM = this.sound.add('minigameBGM', {volume: 0.1});
         this.BGM.setLoop(true);
         this.BGM.play();
+
+        // SFX
+        this.success = this.sound.add('mgSuccess', {volume: 0.3});
+
+        // Success SFX check
+        this.successCheck = false;
     }
 
     update() {
@@ -127,6 +133,10 @@ class Maze extends Phaser.Scene {
         
         // If end of maze is reached end scene
         if(this.mazeHead.x > 900){
+            if (this.successCheck == false){
+                this.success.play();
+                this.successCheck = true;
+            };
             this.gameOver = true;
             this.successMessage.setAlpha(1);
             this.altMessage.setAlpha(1);
