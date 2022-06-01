@@ -81,6 +81,17 @@ class Hurdle extends Phaser.Scene {
     this.BGM = this.sound.add('minigameBGM', {volume: 0.1});
     this.BGM.setLoop(true);
     this.BGM.play();
+
+    // Running animation
+    this.tweens.add({
+
+      targets: this.hurdleSprite,
+      angle: {from: -5, to: 0},
+      duration: 100,
+      yoyo: true,
+      loop: -1
+ 
+    });
   }
 
   update() {
