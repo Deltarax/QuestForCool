@@ -181,7 +181,6 @@ class Cutscene extends Phaser.Scene {
 
     // function to make the mc a bit bigger, letting us create perspective tricks
     mcEnlarger() {
-        console.log("called");
         this.enlargeFlag = true;
         this.tweens.add({
 

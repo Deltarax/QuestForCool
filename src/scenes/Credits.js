@@ -4,8 +4,6 @@ class Credit extends Phaser.Scene {
     }
   
     create() {
-      console.log('Inside credit');
-
       // camera fade in
       this.cameras.main.fadeIn(500, 255, 255, 255);
 

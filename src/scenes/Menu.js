@@ -4,8 +4,6 @@ class Menu extends Phaser.Scene {
     }
   
     create() {
-      console.log('Inside Menu');
-
       // added keycode
       keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 

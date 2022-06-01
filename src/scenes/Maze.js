@@ -4,8 +4,6 @@ class Maze extends Phaser.Scene {
     }
 
     create() {
-        console.log("we in maze mode");
-
         // camera fade in
         this.cameras.main.fadeIn(500, 255, 255, 255);
 

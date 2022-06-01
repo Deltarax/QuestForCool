@@ -58,8 +58,6 @@ class Load extends Phaser.Scene {
     }
 
     update(){
-        console.log('loading');
-
         this.scene.start('menuScene');
         cutsceneState = 'start';
     }

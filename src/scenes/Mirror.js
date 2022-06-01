@@ -4,8 +4,6 @@ class Mirror extends Phaser.Scene {
     }
 
     create() {
-        console.log("we in mirror modes");
-
         // camera fade in
         this.cameras.main.fadeIn(500, 255, 255, 255);
 

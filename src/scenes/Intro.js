@@ -4,8 +4,6 @@ class Intro extends Phaser.Scene {
     }
   
     create() {
-      console.log('Inside intro');
-
       // camera fade in
       this.cameras.main.fadeIn(500, 255, 255, 255);
 
