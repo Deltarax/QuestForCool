@@ -82,7 +82,7 @@ class Hurdle extends Phaser.Scene {
 
   update() {
 
-    this.physics.world.overlap(this.hurdleSprite, this.hurdle, this.hurdleCollision, null, this);
+    this.physics.world.overlap(this.hurdleJump, this.hurdle, this.hurdleCollision, null, this);
 
     this.hurdleBG.tilePositionX += 4;
     if (Phaser.Input.Keyboard.JustDown(keySPACE)) {

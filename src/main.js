@@ -15,6 +15,10 @@ let config = {
     dom: {
         createContainer: true
     },
+    fps: {
+        target: 60,
+        forceSetTimeOut: true
+    }, 
     scene: [ Load, Menu, Weightlift, Cutscene, Mirror, Intro, End, Maze, Hurdle, Credit]
 }
 
