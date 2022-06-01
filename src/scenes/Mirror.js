@@ -18,8 +18,7 @@ class Mirror extends Phaser.Scene {
         this.mouthOpen = true;
 
         // text configuration
-        this.add.text(100, 25, "Use the keyboard to type some encouragement to yourself!", smallConfig);
-        // this.add.text(100, 100, "Capitalization and spaces are important!", smallConfig);
+        this.add.text(370, 25, "Type -anything- to practice speaking!", smallConfig);
 
 
         // Create the green arrow, link it to next scene, and hide it before it's needed.

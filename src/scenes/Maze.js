@@ -13,17 +13,16 @@ class Maze extends Phaser.Scene {
         this.gameOver = false;
 
         // text configuration
-        this.add.text(50, 25, "Use Arrow keys to move!     Don't touch the walls!", smallConfig);
-        // this.add.text(50, 75, "Don't touch the walls!", smallConfig);
+        this.add.text(50, 25, "Use Arrow keys to move!", smallConfig);
 
         // adds Main charecter sprites
         this.mazeHead = this.physics.add.sprite(25, 320, 'mazeHead').setOrigin(0.5, 0.5).setScale(0.12);
         this.mazeHead.body.setCircle(this.mazeHead.width / 2);
         this.mazeHead.setCollideWorldBounds(true);
-        this.mazeHead.setInteractive({
+        /*this.mazeHead.setInteractive({
             draggable: true,
             useHandCursor: true
-        });
+        });*/
 
         // add cool kid heads
         this.CK1 = this.add.sprite(905, 300, 'CK1').setOrigin(0.5, 0.5).setScale(0.25);
@@ -104,11 +103,12 @@ class Maze extends Phaser.Scene {
         this.successBackground = this.add.rectangle(450, 275, 1200, 300, '0xD4D4D4').setAlpha(0);
         this.successMessage = this.add.text(game.config.width/2, game.config.height/2, 'Success!', successConfig).setOrigin(0.5,0.5).setAlpha(0);
 
+        /*
         this.mazeHead.on('drag', (pointer, dragX, dragY) => {
             this.mazeHead.x = dragX;
             this.mazeHead.y = dragY;
             // this.printMessage(`Dragging ${this.burrito.texture.key}...`);
-        });
+        }); */
 
         // this.physics.add.collider(this.mazeHead, this.cornMaze, this.cornCollision, null, this);
 
@@ -135,15 +135,6 @@ class Maze extends Phaser.Scene {
         }
         
         if(this.mazeHead.x > 900){
-            this.gameOver = true;
-            this.successMessage.setAlpha(1);
-            this.successBackground.setAlpha(1);
-            // this.whiteRectangle.setAlpha(1);
-            this.nextArrow.setAlpha(1);
-        }
-
-        // CHEAT TO END
-        if(this.arrowkeys.left.isDown && this.arrowkeys.right.isDown){
             this.gameOver = true;
             this.successMessage.setAlpha(1);
             this.successBackground.setAlpha(1);

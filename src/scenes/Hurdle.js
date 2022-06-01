@@ -29,11 +29,14 @@ class Hurdle extends Phaser.Scene {
 
     // input
     keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+    keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
+
 
     // score & text
     this.hurdleScore = 0;
-    this.scoreText = this.add.text(420, 0, 'Leaps: ' + this.hurdleScore, smallConfig);
-    this.add.text(350, 100, "Press SPACE to jump!", smallConfig); 
+    this.scoreText = this.add.text(100, 375, 'Leaps: ' + this.hurdleScore, smallConfig);
+    this.add.text(350, 85, "Press SPACE to jump!", smallConfig);
+    this.add.text(320, 140, "(If you run out of track, press R to retry.)", smallestConfig);
 
     //next scene arrow
     this.nextArrow = this.add.sprite(50, 500, 'arrow').setAlpha(0).setScale(2);
@@ -113,6 +116,11 @@ class Hurdle extends Phaser.Scene {
       this.successMessage.setAlpha(1);
       this.scoreText.setText('Nice Job!');
     }
+    if (Phaser.Input.Keyboard.JustDown(keyR)) {
+      this.BGM.stop();
+      this.scene.start('hurdleScene');
+    }
+
   }
 
   //resets hurdles after failure

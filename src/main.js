@@ -3,7 +3,7 @@ let config = {
     width: 960,
     height: 540,
     autoCenter: true,
-    backgroundColor: '#81B622',
+    backgroundColor: '#b8d8be',
     physics: {
         default: 'arcade',
         arcade: { debug: false }
@@ -67,6 +67,19 @@ let successConfig = {
     backgroundColor: '#D4D4D4',
     color: '#00BB00',
     align: 'right',
+    padding: {
+    top: 15,
+    bottom: 15,
+    },
+    fixedWidth: 0
+}
+
+let smallestConfig = {
+    fontFamily: 'AmaticSC-Regular',
+    fontSize: '30px',
+    // backgroundColor: '#FFFFFF',
+    color: '#000000',
+    align: 'left',
     padding: {
     top: 15,
     bottom: 15,
