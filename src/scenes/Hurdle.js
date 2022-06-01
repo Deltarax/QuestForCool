@@ -104,7 +104,7 @@ class Hurdle extends Phaser.Scene {
     }
 
     //resets hurdles after success
-    if (this.hurdle.x == -75){
+    if (this.hurdle.x <= -75){
       this.hurdle.x = 1000;
       this.hurdleScore ++;
       this.scoreText.setText('Leaps: ' + this.hurdleScore);
