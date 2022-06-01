@@ -3,7 +3,7 @@ let config = {
     width: 960,
     height: 540,
     autoCenter: true,
-    backgroundColor: '#b8d8be',
+    backgroundColor: '#81B622',
     physics: {
         default: 'arcade',
         arcade: { debug: false }
