@@ -131,6 +131,9 @@ class Maze extends Phaser.Scene {
                 this.mazeHead.setVelocityX(-200);
             } else if (this.arrowkeys.right.isDown) {
                 this.mazeHead.setVelocityX(200);
+            } else {
+                this.mazeHead.setVelocityX(0);
+                this.mazeHead.setVelocityY(0);
             }
         }
         
