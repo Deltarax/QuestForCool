@@ -101,7 +101,6 @@ class Weightlift extends Phaser.Scene {
                 this.weightdownFlag = false;
                 this.weightScore++;
                 this.scoreText.setText('Gains: ' + this.weightScore);
-                console.log(this.weightScore);
                 this.weightSFX.play();
             } else {
                 this.weightliftDown.setAlpha(1);

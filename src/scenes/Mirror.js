@@ -68,7 +68,6 @@ class Mirror extends Phaser.Scene {
         this.input.keyboard.on('keydown', event => {
 
             // every time the player hits a key, reveal a letter from the final message
-            console.log(event);
             this.playerProgress++;
             this.playerText.setText("I am cool. \nI am funny! \nI can talk to them!".substring(0, this.playerProgress));
 
