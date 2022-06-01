@@ -41,6 +41,7 @@ class Load extends Phaser.Scene {
 
         // music and sound
         this.load.audio('minigameBGM', './assets/minigame.mp3');
+        this.load.audio('cutsceneBGM', './assets/cutsceneBG.mp3');
         this.load.audio('weights', './assets/weightsSFX.wav');
         this.load.audio('mirrorSuccess', './assets/mirrorSuccess.wav');
         this.load.audio('jumpSFX', './assets/jumpSFX.wav');
@@ -53,7 +54,7 @@ class Load extends Phaser.Scene {
     update(){
         console.log('loading');
 
-        this.scene.start('endScene');
+        this.scene.start('menuScene');
         cutsceneState = 'start';
     }
 }

@@ -31,6 +31,7 @@ class Weightlift extends Phaser.Scene {
             if (gameObject == this.nextArrow){
                 // camera fade out
                 this.cameras.main.fadeOut(500, 255, 255, 255);
+                this.BGM.stop();
                 this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
                     this.BGM.stop();
                     cutsceneState = 'mirror';

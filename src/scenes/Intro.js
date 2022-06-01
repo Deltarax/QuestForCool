@@ -33,14 +33,10 @@ class Intro extends Phaser.Scene {
 
         });
       }
-
+      
       // Create the green arrow, link it to next scene, and hide it before it's needed.
       this.nextArrow = this.add.sprite(50, 500, 'arrow').setAlpha(0).setScale(2);
       this.nextArrow.setInteractive({
-          useHandCursor: true,
-      });
-      this.restart = this.add.sprite(900, 30, 'restart').setAlpha(1).setScale(.5);
-      this.restart.setInteractive({
           useHandCursor: true,
       });
       // click on a Game Object
@@ -51,10 +47,6 @@ class Intro extends Phaser.Scene {
             this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
               this.scene.start('cutScene');
             })
-          }
-          if (gameObject == this.restart){
-            cutsceneState = 'start';
-            this.scene.start('menuScene');
           }
       });
 

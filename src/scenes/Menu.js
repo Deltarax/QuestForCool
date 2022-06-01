@@ -19,23 +19,21 @@ class Menu extends Phaser.Scene {
       this.nextArrow.setInteractive({
           useHandCursor: true,
       });
-      this.restart = this.add.sprite(900, 30, 'restart').setAlpha(1).setScale(.5);
-      this.restart.setInteractive({
-          useHandCursor: true,
-      });
+
+      // BGM
+      this.BGM = this.sound.add('cutsceneBGM', {volume: 0.1});
+      this.BGM.setLoop(true);
+      this.BGM.play();
+
       // click on a Game Object
       this.input.on('gameobjectdown', (pointer, gameObject, event) => {
           if (gameObject == this.nextArrow){
             this.cameras.main.fadeOut(500, 255, 255, 255);
+            this.BGM.stop();
             this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
               this.scene.start('introScene');
             })
           }
-          if (gameObject == this.restart){
-            cutsceneState = 'start';
-            this.scene.start('menuScene');
-          }
-          
       });
 
       this.tweens.add({

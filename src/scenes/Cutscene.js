@@ -31,6 +31,11 @@ class Cutscene extends Phaser.Scene {
         this.mcBench = this.add.sprite(220,290, 'mcBench').setOrigin(0.5, 0.5);
         this.teardrop = this.add.sprite(280, 50, 'teardrop').setOrigin(0.5,0.5).setAlpha(0);
 
+        // BGM
+        this.BGM = this.sound.add('cutsceneBGM', {volume: 0.1});
+        this.BGM.setLoop(true);
+        this.BGM.play();
+
         // checks what kind of cutscene we are in, and puts appropriate text
         if (cutsceneState == 'start'){
             this.speechBubble = this.add.sprite(850, 160, 'weightSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
@@ -38,7 +43,7 @@ class Cutscene extends Phaser.Scene {
             this.speechBubble = this.add.sprite(850, 160, 'mirrorSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
         } else if (cutsceneState == 'maze'){
             this.speechBubble = this.add.sprite(850, 160, 'mazeSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
-            this.speechBubble = this.add.sprite(850, 160, 'mazeSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
+            //this.speechBubble = this.add.sprite(850, 160, 'mazeSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
         } else if (cutsceneState == 'hurdle'){
             this.speechBubble = this.add.sprite(850, 140, 'hurdleSpeechBubble').setOrigin(0.5,0.5).setAlpha(0);
         } else if (cutsceneState == 'end'){
@@ -60,6 +65,7 @@ class Cutscene extends Phaser.Scene {
             if (gameObject == this.nextArrow){
                 // camera fade out
                 this.cameras.main.fadeOut(500, 255, 255, 255);
+                this.BGM.stop()
                 this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
                     // depending on what cutscene, start the correct game
                     if (cutsceneState == 'start'){
@@ -77,8 +83,9 @@ class Cutscene extends Phaser.Scene {
             }
             
             if (gameObject == this.restart){
-            cutsceneState = 'start';
-            this.scene.start('menuScene');
+                this.BGM.stop();
+                cutsceneState = 'start';
+                this.scene.start('menuScene');
             }
         });
 

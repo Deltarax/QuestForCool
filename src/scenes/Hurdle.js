@@ -12,10 +12,6 @@ class Hurdle extends Phaser.Scene {
     this.hurdleBG = this.add.tileSprite(0, 0, 960, 540, 'hurdleBG').setOrigin(0, 0);
     this.hurdleSprite = this.physics.add.sprite(225, 370, 'hurdleRun').setOrigin(0, 0);
     this.hurdleJump = this.physics.add.sprite(225, 370, 'hurdleJump').setOrigin(0, 0).setAlpha(0);
-
-    this.hurdleGroup = this.add.group({
-      runChildUpdate: true
-    });
     this.hurdle = this.physics.add.sprite(850, 460, 'hurdle').setOrigin(0, 0).setVelocityX(-300);
     
     // hurdle sprite physics
@@ -34,9 +30,10 @@ class Hurdle extends Phaser.Scene {
     // input
     keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-    // score
+    // score & text
     this.hurdleScore = 0;
-    this.scoreText = this.add.text(0, 0, 'Leaps: ' + this.hurdleScore, smallConfig);
+    this.scoreText = this.add.text(420, 0, 'Leaps: ' + this.hurdleScore, smallConfig);
+    this.add.text(350, 100, "Press SPACE to jump!", smallConfig); 
 
     //next scene arrow
     this.nextArrow = this.add.sprite(50, 500, 'arrow').setAlpha(0).setScale(2);
@@ -54,6 +51,7 @@ class Hurdle extends Phaser.Scene {
         if (gameObject == this.nextArrow){
           // camera fade out
           this.cameras.main.fadeOut(500, 255, 255, 255);
+          this.BGM.stop();
           this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
             this.BGM.stop();
             cutsceneState = 'end';

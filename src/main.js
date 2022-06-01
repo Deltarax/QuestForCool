@@ -25,8 +25,8 @@ let textConfig = {
     color: '#000000',
     align: 'right',
     padding: {
-    top: 5,
-    bottom: 5,
+    top: 15,
+    bottom: 15,
     },
     fixedWidth: 0
 }
@@ -38,21 +38,21 @@ let smallConfig = {
     color: '#000000',
     align: 'left',
     padding: {
-    top: 5,
-    bottom: 5,
+    top: 15,
+    bottom: 15,
     },
     fixedWidth: 0
 }
 
 let mediumConfig = {
     fontFamily: 'AmaticSC-Regular',
-    fontSize: '75px',
+    fontSize: '65px',
     // backgroundColor: '#FFFFFF',
     color: '#000000',
     align: 'right',
     padding: {
-    top: 5,
-    bottom: 5,
+    top: 15,
+    bottom: 15,
     },
     fixedWidth: 0
 }
@@ -64,8 +64,8 @@ let successConfig = {
     color: '#00BB00',
     align: 'right',
     padding: {
-    top: 5,
-    bottom: 5,
+    top: 15,
+    bottom: 15,
     },
     fixedWidth: 0
 }
