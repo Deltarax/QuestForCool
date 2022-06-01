@@ -11,6 +11,7 @@ class Menu extends Phaser.Scene {
 
       this.bg = this.add.sprite(0,0, 'cutsceneBG').setOrigin(0, 0);
 
+      // title
       this.add.text(game.config.width/2, game.config.height/2 - 100, "Quest for Cool", textConfig).setOrigin(0.5,0.5);
       this.add.text(game.config.width/2, game.config.height/2, "Press the green arrow to begin!", smallConfig).setOrigin(0.5,0.5);
 
@@ -36,6 +37,7 @@ class Menu extends Phaser.Scene {
           }
       });
 
+      // make the arrow 'blink'
       this.tweens.add({
 
         targets: this.nextArrow,

@@ -72,6 +72,8 @@ class Hurdle extends Phaser.Scene {
     // success message
     this.successBackground = this.add.rectangle(450, 275, 1200, 300, '0xD4D4D4').setAlpha(0);
     this.successMessage = this.add.text(game.config.width/2, game.config.height/2, 'Success!', successConfig).setOrigin(0.5,0.5).setAlpha(0);
+    this.altMessage = this.add.text(game.config.width/2, game.config.height/2 + 125, '(Just approach them already!)', smallConfig).setOrigin(0.5,0.5).setAlpha(0);
+
 
     // SFX
     this.jumpSFX = this.sound.add('jumpSFX', {volume: 0.5});
@@ -81,6 +83,17 @@ class Hurdle extends Phaser.Scene {
     this.BGM = this.sound.add('minigameBGM', {volume: 0.1});
     this.BGM.setLoop(true);
     this.BGM.play();
+
+    // Running animation
+    this.tweens.add({
+
+      targets: this.hurdleSprite,
+      angle: {from: -5, to: 0},
+      duration: 100,
+      yoyo: true,
+      loop: -1
+ 
+    });
   }
 
   update() {
@@ -104,7 +117,7 @@ class Hurdle extends Phaser.Scene {
     }
 
     //resets hurdles after success
-    if (this.hurdle.x == -75){
+    if (this.hurdle.x <= -75){
       this.hurdle.x = 1000;
       this.hurdleScore ++;
       this.scoreText.setText('Leaps: ' + this.hurdleScore);

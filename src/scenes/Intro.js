@@ -14,6 +14,7 @@ class Intro extends Phaser.Scene {
 
       this.bg = this.add.sprite(0,0, 'textBG').setOrigin(0, 0);
 
+      // Intro texts
       let texts = [
         this.add.text(game.config.width/2, game.config.height/2 - 150, "Hank has always been alone.", mediumConfig).setOrigin(0.5,0.5),
         this.add.text(game.config.width/2, game.config.height/2 - 100, "He spends all day playing games,", mediumConfig).setOrigin(0.5,0.5),
@@ -22,6 +23,7 @@ class Intro extends Phaser.Scene {
         this.add.text(game.config.width/2, game.config.height/2 + 50, "he needs to be like them.", mediumConfig).setOrigin(0.5,0.5)
       ];
 
+      // Slowly display each line of text with a delay
       for (let i = 0; i < texts.length; i++){
         texts[i].setAlpha(0);
         this.tweens.add({
@@ -51,6 +53,7 @@ class Intro extends Phaser.Scene {
           }
       });
 
+      // Show and blink the arrow after a delay
       this.tweens.add({
 
         targets: this.nextArrow,
