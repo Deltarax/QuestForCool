@@ -14,7 +14,7 @@ class Credit extends Phaser.Scene {
       this.add.text(game.config.width/2, game.config.height/2 - 150, "Credits:", mediumConfig).setOrigin(0.5,0.5);
       this.add.text(game.config.width/2, game.config.height/2 - 100, "Programming: Jackson Gerard", mediumConfig).setOrigin(0.5,0.5);
       this.add.text(game.config.width/2, game.config.height/2 - 50, "Art: Esmeralda Rangel", mediumConfig).setOrigin(0.5,0.5);
-      this.add.text(game.config.width/2, game.config.height/2 + 0, "Sound and Design: Solomon", mediumConfig).setOrigin(0.5,0.5);
+      this.add.text(game.config.width/2, game.config.height/2 + 0, "Sound and Design: Solomon (Sunnie) Bell", mediumConfig).setOrigin(0.5,0.5);
 
 
 
