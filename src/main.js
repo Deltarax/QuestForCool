@@ -87,6 +87,32 @@ let smallestConfig = {
     fixedWidth: 0
 }
 
+let weightConfig = {
+    fontFamily: 'Amatic-Bold',
+    fontSize: '100px',
+    color: '#BA835E',
+    align: 'left',
+    padding: {
+    top: 15,
+    bottom: 15,
+    },
+    fixedWidth: 0
+
+}
+let weight2Config = {
+    fontFamily: 'Amatic-Bold',
+    fontSize: '75px',
+    color: '#BA835E',
+    align: 'left',
+    padding: {
+    top: 15,
+    bottom: 15,
+    },
+    fixedWidth: 0
+
+}
+
+
 let game = new Phaser.Game(config);
 
 let keyF, keyR, keyLEFT, keyRIGHT, keyUP, keyDOWN, keySPACE;

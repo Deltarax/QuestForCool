@@ -48,8 +48,7 @@ class Weightlift extends Phaser.Scene {
 
 
         // instructions
-        this.add.text(100, 350, "Press SPACE to lift!", mediumConfig); 
-        // this.add.text(0,0,'strongboys have 50 gains', smallConfig);
+        this.add.text(100, 350, "Press SPACE to lift!", weight2Config);                                                                                    
 
         // reserves keeys
         keySPACE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -61,7 +60,7 @@ class Weightlift extends Phaser.Scene {
         this.weightTicks = 0;   // Tracking time for loss of progress
         this.weightScore = 0;   // Tracking GAINS
 
-        this.scoreText = this.add.text(100, 200, 'Gains: ' + this.weightScore, textConfig);
+        this.scoreText = this.add.text(100, 200, 'Gains: ' + this.weightScore, weightConfig);
         
         // sfx
         this.weightSFX = this.sound.add('weights', {volume: 0.2});

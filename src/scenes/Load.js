@@ -34,7 +34,7 @@ class Load extends Phaser.Scene {
         this.load.image('CK2', './assets/mazeCK2.png');
         this.load.image('CK3', './assets/mazeCK3.png')
 
-        this.load.image('hurdle', './assets/tempHurdle.png'); //temp
+        this.load.image('hurdle', './assets/tempHurdle.png');
         this.load.image('hurdleRun', './assets/hurdleRun.png');
         this.load.image('hurdleJump', './assets/hurdleJump.png');
         this.load.image('hurdleBG', './assets/hurdleBG.png');
