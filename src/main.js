@@ -1,3 +1,20 @@
+// Created by Esme Rangel, Jackson Gerard, and Solomon Bell
+// Completed 06/01/2022
+
+// Creative Tilt: Our biggest goal for the project was to create a narrative experience that had a soft, storybook aesthetic and quick, simple minigames.
+// We succeed in this threefold.
+// One: We centralized our game around one key cutscene, allowing for players to feel a sense of familiarity with the pattern of the game as they played.
+// Two: We differentiated the cutscene and the gameplay through the use of music. The minigame BGM is spunky and cool, whereas the cutscene BGM is much more airy and relaxed.
+// Three: All art assets were made specifically to lean into a storyboard-esque aesthetic. 
+// Most if not all assets were consciously made to be smooth, round, and pastel in color and shape to maintain a feeling of openness and soothing. 
+// Knowing that we had limitations on time, we maintained our desire for animations by making good use of tweens, using the storyboard theming to support it. 
+// Flat minimal shading maintained a feeling of youth, as our story is a coming of age tale.
+
+// Technical Tilt: Each minigame uses a completely different (yet easily accessible) mechanic to keep the game interesting. 
+// A technique we're happy about is the way the maze was created, using a matrix to place down each wall block. 
+// This allowed us to easily change and implement different variations of the maze during playtesting. 
+// The cutscenes we are also fond of! Since phaser 3 does not have any cutscene capabilities we had to develop them from scratch using events and timers.
+
 let config = {
     type: Phaser.CANVAS,
     width: 960,
