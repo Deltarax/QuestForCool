@@ -45,8 +45,8 @@ class Load extends Phaser.Scene {
         this.load.image('hurdleBG', './assets/hurdleBG.png');
 
         // music and sound
-        this.load.audio('minigameBGM', './assets/minigame.mp3');
-        this.load.audio('cutsceneBGM', './assets/cutsceneBG.mp3');
+        this.load.audio('minigameBGM', './assets/minigameBG-min.mp3');
+        this.load.audio('cutsceneBGM', './assets/cutsceneBG-min.mp3');
         this.load.audio('weights', './assets/weightsSFX.wav');
         this.load.audio('jumpSFX', './assets/jumpSFX.wav');
         this.load.audio('hurdleHit', './assets/hurdleHit.wav');
