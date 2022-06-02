@@ -5,8 +5,8 @@ class Load extends Phaser.Scene {
 
     preload(){
         // elements for cutscene background
-        this.load.image('cutsceneBG', './assets/bg.png');
-        this.load.image('textBG', './assets/bg_text.png');
+        this.load.image('cutsceneBG', './assets/bg.jpg');
+        this.load.image('textBG', './assets/bg_text.jpg');
         this.load.image('coolBench', './assets/coolKidsBenchF.png');
         this.load.image('mcBench', './assets/mcBenchF.png');
         this.load.image('cutsceneMC', './assets/MCF.png');
@@ -42,7 +42,7 @@ class Load extends Phaser.Scene {
         this.load.image('hurdle', './assets/hurdle.png');
         this.load.image('hurdleRun', './assets/hurdleRun.png');
         this.load.image('hurdleJump', './assets/hurdleJump.png');
-        this.load.image('hurdleBG', './assets/hurdleBG.png');
+        this.load.image('hurdleBG', './assets/hurdleBG.jpg');
 
         // music and sound
         this.load.audio('minigameBGM', './assets/minigameBG-min.mp3');
